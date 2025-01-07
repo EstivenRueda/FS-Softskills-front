@@ -1,10 +1,10 @@
-import { Metadata } from "next";
-import { AppLayout } from "@/components";
 import type { PropsWithChildren } from 'react';
+import { Metadata } from 'next';
+import { AppLayout } from '@/components';
 
 export const metadata: Metadata = {
-  title: "Finishing School | Home",
-  description: "Finishing School",
+  title: 'Finishing School | Home',
+  description: 'Finishing School',
 };
 
 type RootLayoutProps = PropsWithChildren;
