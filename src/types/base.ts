@@ -1,5 +1,5 @@
 import type { GridFilterModel } from '@mui/x-data-grid';
-import type { MenuAction } from '@/components';
+// import type { MenuAction } from '@/components';
 
 export type Environment = 'development' | 'production';
 
@@ -44,7 +44,7 @@ export type PaginationArgs = {
   name?: string;
 };
 
-export type TableActionsFn<T> = (record: T) => MenuAction[];
+// export type TableActionsFn<T> = (record: T) => MenuAction[];
 
 export type DownloadResult = {
   data: Blob;
