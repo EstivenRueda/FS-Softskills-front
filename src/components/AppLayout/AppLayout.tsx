@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { Box, Container, styled, useTheme } from "@mui/material";
-import { Header, ProtectedPage, Sidebar } from "@/components";
-import type { PropsWithChildren } from "react";
-import { MINI_SIDEBAR_WIDTH } from "../Sidebar";
+import type { PropsWithChildren } from 'react';
+import { useState } from 'react';
+import { Box, Container, styled, useTheme } from '@mui/material';
+import { Header, ProtectedPage, Sidebar } from '@/components';
+import { MINI_SIDEBAR_WIDTH } from '../Sidebar';
 
-const MainWrapper = styled("main")(() => ({
-  display: "flex",
-  minHeight: "100vh",
-  width: "100%",
+const MainWrapper = styled('main')(() => ({
+  display: 'flex',
+  minHeight: '100vh',
+  width: '100%',
 }));
 
-const PageWrapper = styled("div")(() => ({
-  display: "flex",
+const PageWrapper = styled('div')(() => ({
+  display: 'flex',
   flexGrow: 1,
-  paddingBottom: "60px",
-  flexDirection: "column",
+  paddingBottom: '60px',
+  flexDirection: 'column',
   zIndex: 1,
-  width: "100%",
-  backgroundColor: "transparent",
+  width: '100%',
+  backgroundColor: 'transparent',
 }));
 
 export type AppLayoutProps = PropsWithChildren;
@@ -48,13 +48,13 @@ export function AppLayout(props: AppLayoutProps) {
           className="page-wrapper"
           sx={{
             ...(isCollapse && {
-              [theme.breakpoints.up("lg")]: { ml: `${MINI_SIDEBAR_WIDTH}px` },
+              [theme.breakpoints.up('lg')]: { ml: `${MINI_SIDEBAR_WIDTH}px` },
             }),
           }}
         >
-          <Header onToggleSidebar={handleToggleSidebar} onToggleMobileSidebar={handleToggleMobileSidebar}/>
+          <Header onToggleSidebar={handleToggleSidebar} onToggleMobileSidebar={handleToggleMobileSidebar} />
           <Container>
-            <Box sx={{ minHeight: "calc(100vh - 170px)" }}>{children}</Box>
+            <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>{children}</Box>
           </Container>
         </PageWrapper>
       </MainWrapper>
