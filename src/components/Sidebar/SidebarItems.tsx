@@ -1,14 +1,14 @@
-import useSidebarMenuItems from '@/hooks/useSidebarMenuItems';
-import { Box, List, useMediaQuery } from '@mui/material';
 import { usePathname } from 'next/navigation';
-import React from 'react'
-import { SidebarNavItem, type NavItem } from './SidebarNavItem';
+import { Box, List, useMediaQuery } from '@mui/material';
+import useSidebarMenuItems from '@/hooks/useSidebarMenuItems';
 import { SidebarNavCollapse } from './SidebarNavCollapse';
+import { SidebarNavGroup, type NavGroup } from './SidebarNavGroup';
+import { SidebarNavItem, type NavItem } from './SidebarNavItem';
 
 export type SidebarItemsProps = {
-    isCollapse: boolean;
-    isSidebarHover: boolean;
-    onToggleMobileSidebar: () => void;
+  isCollapse: boolean;
+  isSidebarHover: boolean;
+  onToggleMobileSidebar: () => void;
 };
 
 export function SidebarItems(props: SidebarItemsProps) {
@@ -24,7 +24,9 @@ export function SidebarItems(props: SidebarItemsProps) {
     <Box sx={{ px: 3 }}>
       <List sx={{ pt: 0 }} className="sidebarNav">
         {menuItems.map((item) => {
-          if (isNavItem(item)) {
+          if (isNavGroup(item)) {
+            return <SidebarNavGroup key={item.subheader} item={item} hideMenu={hideMenu} />;
+          } else if (isNavItem(item)) {
             return (
               <SidebarNavCollapse
                 menu={item}
@@ -50,7 +52,11 @@ export function SidebarItems(props: SidebarItemsProps) {
         })}
       </List>
     </Box>
-  )
+  );
+}
+
+function isNavGroup(item: NavItem | NavGroup): item is NavGroup {
+  return !!item?.subheader;
 }
 
 function isNavItem(item: NavItem): item is NavItem {

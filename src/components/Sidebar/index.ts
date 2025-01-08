@@ -1,3 +1,4 @@
 export * from './Sidebar';
-export * from './SidebarNavItem';
 export * from './SidebarItems';
+export * from './SidebarNavGroup';
+export * from './SidebarNavItem';
