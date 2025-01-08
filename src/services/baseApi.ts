@@ -1,65 +1,64 @@
-import { createApi, fetchBaseQuery, RootState } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { setIsAuthenticated } from '@/store';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Mutex } from 'async-mutex';
+import { setIsAuthenticated } from '@/store';
 
 const mutex = new Mutex();
 
 // Configure the base query for API calls
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/v1`, // API base URL from environment variables
+  baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/v1`,
   credentials: 'include',
-  prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState<any, any, any>).auth.token;
-    // If we have a token set in state, let's assume that we should be passing it.
-    if (token) {
-      headers.set('authorization', `Bearer ${token}`);
-    }
-    return headers;
-  },
 });
 
-const baseQueryWithReauth:BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (
+const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (
   args,
   api,
   extraOptions
-)=>{
+) => {
+  // wait until the mutex is available without locking it
   await mutex.waitForUnlock();
-  if (!mutex.isLocked()) {
-    const release = await mutex.acquire(); // Lock the mutex to prevent concurrent refreshes
-    try {
-      // Attempt to refresh the authentication token
-      const refreshResult = await baseQuery(
-        {
-          url: '/token/refresh/',
-          method: 'POST',
-        },
-        api,
-        extraOptions
-      );
-      if (refreshResult.data) {
-        // If the token refresh is successful, update the authentication state
-        api.dispatch(setIsAuthenticated(true));
-      } else {
-        // If the token refresh fails, update the authentication state
-        api.dispatch(setIsAuthenticated(false));
+  let result = await baseQuery(args, api, extraOptions);
+  if (result.error && result.error.status === 401) {
+    // checking whether the mutex is locked
+    if (!mutex.isLocked()) {
+      // Lock the mutex to prevent concurrent refreshes
+      const release = await mutex.acquire();
+      try {
+        // Attempt to refresh the authentication token
+        const refreshResult = await baseQuery(
+          {
+            url: 'auth/token/refresh/',
+            method: 'POST',
+          },
+          api,
+          extraOptions
+        );
+        if (refreshResult.data) {
+          // If the token refresh is successful, update the authentication state
+          api.dispatch(setIsAuthenticated(true));
+          // retry the initial query
+          result = await baseQuery(args, api, extraOptions);
+        } else {
+          // If the token refresh fails, update the authentication state
+          api.dispatch(setIsAuthenticated(false));
+        }
+      } finally {
+        // Release the mutex after the token refresh attempt
+        release();
       }
-    } finally {
-      release(); // Release the mutex after the token refresh attempt
+    } else {
+      // If the mutex is already locked, wait for it to be unlocked and retry the request
+      await mutex.waitForUnlock();
+      result = await baseQuery(args, api, extraOptions);
     }
-  } else {
-    // If the mutex is already locked, wait for it to be unlocked and retry the request
-    await mutex.waitForUnlock();
   }
-  return baseQuery(args, api, extraOptions);
-}
+  return result;
+};
 
 export const baseApi = createApi({
-  reducerPath:'api',
+  reducerPath: 'api',
   baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({}),
-  tagTypes:[
-    'Usuarios',
-    'Habilidades'
-  ]
-})
+  tagTypes: ['Usuarios', 'Habilidades'],
+});

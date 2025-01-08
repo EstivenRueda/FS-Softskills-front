@@ -1,8 +1,8 @@
-import { baseApi } from '@/services';
 import { configureStore } from '@reduxjs/toolkit';
+import { baseApi } from '@/services';
 import { authReducer } from './authSlice';
 
-export function store() {
+export function createStore() {
   return configureStore({
     reducer: {
       [baseApi.reducerPath]: baseApi.reducer,

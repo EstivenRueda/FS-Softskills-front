@@ -1,22 +1,16 @@
-import { User } from '@/types';
 import { createSlice } from '@reduxjs/toolkit';
-import { set } from 'lodash';
-
+import { User } from '@/types';
 
 type AuthState = {
   isAuthenticated: boolean;
   isLoading: boolean;
   user: User | null;
-  accessToken: string | null;
-  refreshToken: string | null;
 };
 
 const initialState: AuthState = {
   isAuthenticated: false,
   isLoading: true,
   user: null,
-  accessToken: null,
-  refreshToken: null,
 };
 
 const authSlice = createSlice({
@@ -32,14 +26,8 @@ const authSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    setAccessToken: (state, action) =>{
-      state.accessToken = action.payload;
-    },
-    setRefreshToken: (state, action) =>{
-      state.refreshToken = action.payload;
-    }
   },
 });
 
-export const { setAccessToken, setRefreshToken, setIsAuthenticated, setIsLoading, setUser } = authSlice.actions;
+export const { setIsAuthenticated, setIsLoading, setUser } = authSlice.actions;
 export const { reducer: authReducer } = authSlice;
