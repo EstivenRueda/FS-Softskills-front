@@ -2,6 +2,7 @@
 
 export * from './AppLayout';
 export * from './AppSetup';
+export * from './ConfirmDialog';
 export * from './forms';
 export * from './Header';
 export * from './ProtectedPage';

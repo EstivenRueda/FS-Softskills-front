@@ -4,7 +4,7 @@ import {
   Filter as FilterIcon
 } from '@mui/icons-material';
 import { NavGroup, NavItem } from '@/components';
-import { useConst } from './useConts';
+import { useConst } from './useConst';
 
 export default function useSidebarMenuItems() {
   return useConst<Array<NavGroup | NavItem>>([
