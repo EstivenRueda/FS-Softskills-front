@@ -26,7 +26,7 @@ export function SidebarItems(props: SidebarItemsProps) {
         {menuItems.map((item) => {
           if (isNavGroup(item)) {
             return <SidebarNavGroup key={item.subheader} item={item} hideMenu={hideMenu} />;
-          } else if (isNavItem(item)) {
+          } if (isNavItem(item)) {
             return (
               <SidebarNavCollapse
                 menu={item}

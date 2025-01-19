@@ -39,7 +39,7 @@ export function SidebarNavItem(props: SidebarNavItemProps) {
     paddingLeft: hideMenu ? '10px' : level > 2 ? `${level * 15}px` : '10px',
     '&:hover': {
       backgroundColor: theme.palette.primary.light,
-      color: theme.palette.primary.main,
+      color: theme.palette.secondary.light,
     },
     '&.Mui-selected': {
       color: 'white',

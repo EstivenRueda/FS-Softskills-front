@@ -17,14 +17,14 @@ export const poppins = Poppins({
 
 export const palette = {
   primary: {
-    main: '#40AEC3',
-    light: '#ECF2FF',
-    dark: '#4570EA',
+    main: '#FD8B51',
+    light: '#F4DFD8',
+    dark: '#CB6040',
   },
   secondary: {
-    main: '#2F3DA9',
-    light: '#E8F7FF',
-    dark: '#23afdb',
+    main: '#CB6040',
+    light: '#CB6040',
+    dark: '#fd9662',
   },
   success: {
     main: '#119328',
@@ -60,7 +60,7 @@ export const palette = {
   },
   text: {
     primary: '#2A3547',
-    secondary: '#5A6A85',
+    secondary: '#4C4C4C',
   },
   action: {
     disabledBackground: 'rgba(73,82,88,0.12)',

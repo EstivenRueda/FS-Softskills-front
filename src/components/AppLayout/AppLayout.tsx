@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Box, Container, styled, useTheme } from '@mui/material';
 import { Header, ProtectedPage, Sidebar } from '@/components';
 import { MINI_SIDEBAR_WIDTH } from '../Sidebar';
+import { red } from '@mui/material/colors';
 
 const MainWrapper = styled('main')(() => ({
   display: 'flex',
@@ -54,7 +55,7 @@ export function AppLayout(props: AppLayoutProps) {
         >
           <Header onToggleSidebar={handleToggleSidebar} onToggleMobileSidebar={handleToggleMobileSidebar} />
           <Container>
-            <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>{children}</Box>
+            <Box sx={{ minHeight: 'calc(100vh - 170px)', backgroundColor:"red" }}>{children}</Box>
           </Container>
         </PageWrapper>
       </MainWrapper>

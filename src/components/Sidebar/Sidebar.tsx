@@ -4,7 +4,7 @@ import { Box, Drawer, useMediaQuery, useTheme } from '@mui/material';
 import { TOP_BAR_HEIGHT, TOP_BAR_WIDTH } from '../Header';
 import { SidebarItems } from './SidebarItems';
 
-export const SIDEBAR_WIDTH = 270;
+export const SIDEBAR_WIDTH = 302;
 export const MINI_SIDEBAR_WIDTH = 87;
 
 export type SidebarProps = {
@@ -60,16 +60,19 @@ export function Sidebar(props: SidebarProps) {
           <Box
             sx={{
               height: '100%',
+              backgroundColor: '#F2E5BF',
             }}
           >
             <Box display="flex" alignItems="center" justifyContent="center" p={3}>
               {(!isCollapse || isSidebarHover) && (
                 <Image
-                  src="/images/logos/logo.webp"
+                  src="/images/logo.png"
                   alt="logo"
                   objectFit="cover"
-                  width={TOP_BAR_WIDTH}
-                  height={TOP_BAR_HEIGHT}
+                  width={0}
+                  height={0}
+                  style={{ width: '100%', height: 'auto' }}
+                  sizes="100vw"
                   priority
                 />
               )}
@@ -99,19 +102,32 @@ export function Sidebar(props: SidebarProps) {
         },
       }}
     >
-      <Box display="flex" alignItems="center" justifyContent="center" p={2} minHeight={118}>
-        {!isCollapse && <Image src="/images/logos/logo.webp" alt="logo" height={TOP_BAR_HEIGHT} width={142} priority />}
+      <Box
+        sx={{
+          height: '100%',
+          backgroundColor: '#F2E5BF',
+        }}
+      >
+        <Box display="flex" alignItems="center" justifyContent="center" p={2} minHeight={118}>
+          {!isCollapse && (
+            <Image
+              src="/images/logo.png"
+              alt="logo"
+              objectFit="cover"
+              width={0}
+              height={0}
+              style={{ width: '100%', height: 'auto' }}
+              sizes="100vw"
+              priority
+            />
+          )}
+        </Box>
+        <SidebarItems
+          isCollapse={isCollapse}
+          isSidebarHover={isSidebarHover}
+          onToggleMobileSidebar={onToggleMobileSidebar}
+        />
       </Box>
-      <SidebarItems
-        isCollapse={isCollapse}
-        isSidebarHover={isSidebarHover}
-        onToggleMobileSidebar={onToggleMobileSidebar}
-      />
     </Drawer>
   );
-
-
 }
-
-
-
