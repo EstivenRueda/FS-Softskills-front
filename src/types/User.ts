@@ -13,6 +13,16 @@ export type UserCredentials = {
   password: string;
 };
 
+export type SendEmail = {
+  email: string;
+};
+
+export type ResetConfirmLoggedin = {
+  email: string;
+  current_password: string;
+  new_password: string;
+};
+
 export type Profile = {
   id: string;
   display_name: string;
