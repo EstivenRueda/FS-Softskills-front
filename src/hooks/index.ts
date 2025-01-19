@@ -1,3 +1,4 @@
+export * from './auth';
 export * from './useConfirmDialog';
 export * from './useConst';
 export * from './useFormDialog';
