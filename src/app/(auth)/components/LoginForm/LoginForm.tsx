@@ -3,6 +3,7 @@ import { LoadingButton as Button } from '@mui/lab';
 import { Box, IconButton, InputAdornment, Link, Stack, Typography } from '@mui/material';
 import { FormContainer, TextField } from '@/components';
 import { useLoginForm } from '../../hooks';
+import Image from 'next/image';
 
 export function LoginForm() {
   const {
@@ -16,6 +17,7 @@ export function LoginForm() {
   } = useLoginForm();
 
   return (
+    <>
     <FormContainer
       formContext={formContext}
       onSuccess={handleSubmit}
@@ -24,7 +26,20 @@ export function LoginForm() {
         flexDirection: 'column',
         gap: 2,
       }}
+
     >
+      <Box display="flex" alignItems="center" justifyContent="center" p={3}>
+        <Image
+          src="/images/logo.png"
+          alt="logo"
+          objectFit="cover"
+          width={0}
+          height={0}
+          style={{ width: '100%', height: 'auto' }}
+          sizes="100vw"
+          priority
+        />
+      </Box>
       <Typography variant="h6" color="secondary" fontWeight={400} align="center">
         Iniciar Sesión
       </Typography>
@@ -82,5 +97,6 @@ export function LoginForm() {
         Iniciar sesión
       </Button>
     </FormContainer>
+    </>
   );
 }
