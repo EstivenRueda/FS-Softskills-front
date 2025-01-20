@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Lock as LockIcon } from '@mui/icons-material';
 import { useFormDialog } from '@/hooks';
 import { useLoginMutation } from '@/services';
-import { setIsAuthenticated, useAppDispatch } from '@/store';
+import { setIsAuthenticated, setUser, useAppDispatch } from '@/store';
 import { UserCredentials } from '@/types';
 import { ResetPasswordEmailForm } from '../components';
 import { useLoginFormResolver } from './useLoginFormResolver';
@@ -45,6 +45,7 @@ export function useLoginForm() {
 
   const handleLogin = (response: any) => {
     dispatch(setIsAuthenticated(true));
+    dispatch(setUser(response?.user));
     router.push('/mis-habilidades-blandas');
   };
 
