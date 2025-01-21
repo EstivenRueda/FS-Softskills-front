@@ -6,5 +6,5 @@ export type PreguntasResult = QueryResult<Pregunta>;
 export type PreguntasArgs = PaginationArgs & {
   search?: string;
   isActive?: BooleanString;
-  softskillId? : string;
+  softskillId?: string;
 };

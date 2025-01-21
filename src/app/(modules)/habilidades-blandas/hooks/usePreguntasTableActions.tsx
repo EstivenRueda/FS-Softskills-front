@@ -1,25 +1,46 @@
-import { useRouter } from 'next/navigation';
 import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
-import { useConst } from '@/hooks';
+import { useConfirmDialog, useConst, useFormDialog, useLoggerNotifier } from '@/hooks';
 import { TableActionsFn } from '@/types';
+import { useDeletePreguntaMutation } from '../services';
 import { Pregunta } from '../types';
+import { PreguntaForm } from '../components';
 
 export function usePreguntasTableActions() {
-  const route = useRouter();
+  const { showConfirmDialog } = useConfirmDialog();
+  const { showFormDialog } = useFormDialog();
+  const { notify } = useLoggerNotifier();
+  const [deletePregunta] = useDeletePreguntaMutation();
 
   return useConst<TableActionsFn<Pregunta>>(() => (pregunta: Pregunta) => [
     {
       label: 'Editar',
       icon: <EditIcon color="secondary" />,
       onClick() {
-        route.push(`/preguntas/${pregunta.id}/editar`);
+        const modal = showFormDialog({
+          icon: EditIcon,
+          title: 'Editar pregunta',
+          width: 1000,
+          children: <PreguntaForm pregunta={pregunta} onCompleted={() => modal.hide()} />,
+        });
       },
     },
     {
       label: 'Eliminar',
       icon: <DeleteIcon color="secondary" />,
       onClick() {
-        route.push(`/preguntas/${pregunta.id}/editar`);
+        showConfirmDialog({
+          icon: DeleteIcon,
+          destructive: true,
+          checkbox: true,
+          async onConfirm() {
+            try {
+              await deletePregunta(pregunta.id).unwrap();
+              notify('Pregunta eliminada exitosamente', 'success');
+            } catch (error) {
+              notify('Error al eliminar. Inténtalo de nuevo.', 'error', error);
+            }
+          },
+        });
       },
     },
   ]);

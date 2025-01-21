@@ -13,10 +13,11 @@ import { useHabilidadBlandaResolver } from './useHabilidadBlandaResolver';
 export function useHabilidadBlandaInfoForm(slug: string) {
   const router = useRouter();
   const { notify } = useLoggerNotifier();
+  const isViewPage = useIsViewPage();
+
   const { data: habilidadBlanda } = useRetrieveHabilidadBlandaQuery(slug, { skip: !slug });
   const [createHabilidadBlanda, { isLoading: createHabilidadBlandaLoading }] = useCreateHabilidadBlandaMutation();
   const [updateHabilidadBlanda, { isLoading: updateHabilidadBlandaLoading }] = useUpdateHabilidadBlandaMutation();
-  const isViewPage = useIsViewPage();
 
   const habilidadBlandaResolver = useHabilidadBlandaResolver();
   const formContext = useForm<HabilidadBlanda>({

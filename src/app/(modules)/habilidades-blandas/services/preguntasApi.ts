@@ -52,9 +52,9 @@ const preguntasApi = baseApi.injectEndpoints({
 
 export const {
   useRetrievePreguntasQuery,
-  useCreatePreguntaMutation,
-  useDeletePreguntaMutation,
   useRetrievePreguntaQuery,
-  usePatchPreguntaMutation,
+  useCreatePreguntaMutation,
   useUpdatePreguntaMutation,
+  usePatchPreguntaMutation,
+  useDeletePreguntaMutation,
 } = preguntasApi;

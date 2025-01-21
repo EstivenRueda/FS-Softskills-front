@@ -1,7 +1,8 @@
-'use client'
+'use client';
 
-export * from './HabilidadesBlandasTable';
-export * from './HabilidadBlandaInfoForm';
+export * from './CapacitacionesTable';
 export * from './HabilidadBlandaForm';
-export * from './PreguntasTable'
-export * from './CapacitacionesTable'
+export * from './HabilidadBlandaInfoForm';
+export * from './HabilidadesBlandasTable';
+export * from './PreguntaForm';
+export * from './PreguntasTable';
