@@ -36,7 +36,7 @@ export function useHabilidadBlandaInfoForm(slug: string) {
       }
       const habilidadBlandaCreated = await createHabilidadBlanda(data).unwrap();
       notify('Habilidad blanda creada correctamente', 'success');
-      router.push(`/habilidades-blandas${habilidadBlandaCreated.slug}/editar`);
+      router.push(`/habilidades-blandas/${habilidadBlandaCreated.slug}/editar`);
       scrollToTop();
       return;
     } catch (error) {

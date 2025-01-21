@@ -2,8 +2,6 @@ import { GridColDef } from "@mui/x-data-grid";
 import { useMemo } from "react";
 import { usePreguntasTableActions } from "./usePreguntasTableActions";
 
-
-
 export function usePreguntasTableColumns() {
 
   const getTableActions = usePreguntasTableActions();
@@ -23,7 +21,6 @@ export function usePreguntasTableColumns() {
         disableColumnMenu: true,
         renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1,
       },
-
     ],
     [getTableActions]
   );

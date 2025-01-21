@@ -72,18 +72,18 @@ export function FormStepper(props: FormStepperProps) {
               key={step.title}
               icon={step.icon}
               label={
-                <Typography fontSize={15} mb={2} width={120} align="center">
+                <Typography fontSize={15} width={120} align="center">
                   {step.title}
                 </Typography>
               }
               disabled={!isStepEnabled(step.name)}
-              sx={{ pb: 3 }}
+              sx={{ pb: 2 }}
             />
           ))}
         </Tabs>
       </Box>
 
-      <Box py={5} px={3}>
+      <Box py={3} px={3}>
         {steps[activeStep]?.component}
       </Box>
 

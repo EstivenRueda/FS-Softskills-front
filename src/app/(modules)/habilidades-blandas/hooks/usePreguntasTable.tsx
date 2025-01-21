@@ -1,8 +1,9 @@
-import { Refresh as RefreshIcon } from '@mui/icons-material';
+import { Add as AddIcon, Refresh as RefreshIcon } from '@mui/icons-material';
 import { GridToolbarActions } from '@/components';
-import { useDataGridStateQuery } from '@/hooks';
-import { usePreguntasTableColumns } from './usePreguntasTableColumns';
+import { useDataGridStateQuery, useFormDialog } from '@/hooks';
+import { PreguntaForm } from '../components';
 import { useRetrievePreguntasQuery } from '../services';
+import { usePreguntasTableColumns } from './usePreguntasTableColumns';
 
 export function usePreguntasTable() {
   const {
@@ -24,12 +25,22 @@ export function usePreguntasTable() {
   });
 
   const columns = usePreguntasTableColumns();
+  const { showFormDialog } = useFormDialog();
 
   const toolbar = () => (
     <GridToolbarActions
       actions={[{ title: 'Refrescar', icon: <RefreshIcon />, onClick: refetch, disabled: isLoading }]}
     />
   );
+
+  const handleCreate = () => {
+    const modal = showFormDialog({
+      icon: AddIcon,
+      title: 'Crear pregunta',
+      width: 1000,
+      children: <PreguntaForm onCompleted={() => modal.hide()} />,
+    });
+  };
 
   return {
     apiRef,
@@ -46,5 +57,6 @@ export function usePreguntasTable() {
     setRowSelectionModel,
     columns,
     toolbar,
+    handleCreate,
   };
 }
