@@ -40,6 +40,7 @@ const authApi = baseApi.injectEndpoints({
       query: () => ({
         url: '/auth/token/verify/',
         method: 'POST',
+        body: {},
       }),
       invalidatesTags: ['Usuarios'],
     }),
@@ -47,6 +48,7 @@ const authApi = baseApi.injectEndpoints({
       query: () => ({
         url: '/auth/token/refresh/',
         method: 'POST',
+        body: {},
       }),
     }),
     SendEmail: builder.mutation({
