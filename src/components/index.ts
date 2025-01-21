@@ -8,3 +8,5 @@ export * from './Header';
 export * from './ProtectedPage';
 export * from './Sidebar';
 export * from './ThemeRegistry';
+export * from './MenuActions'
+export * from './GridToolbarActions'
