@@ -8,7 +8,7 @@ type ProtectedRouteProps = PropsWithChildren;
 
 export function ProtectedPage(props: ProtectedRouteProps) {
   const { children } = props;
-  // useVerify();
+  useVerify();
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {

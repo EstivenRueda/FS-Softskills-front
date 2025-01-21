@@ -22,5 +22,6 @@ export * from './DateFnsProvider';
 export * from './FormErrorProvider';
 export * from './NumericTextField';
 export * from 'react-hook-form';
+export * from './FormStepper';
 export { default as ModalProvider, useModal } from 'mui-modal-provider';
 export type { ModalProviderProps, UseModalOptions, ModalComponentProps } from 'mui-modal-provider';

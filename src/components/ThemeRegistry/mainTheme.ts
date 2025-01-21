@@ -59,7 +59,7 @@ export const palette = {
     600: '#2A3547',
   },
   text: {
-    primary: '#2A3547',
+    primary: '#257180',
     secondary: '#4C4C4C',
   },
   action: {
