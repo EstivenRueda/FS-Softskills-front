@@ -5,16 +5,17 @@ import {
 } from '@mui/icons-material';
 import { LoadingButton as Button } from '@mui/lab';
 import { Avatar, Box, Divider, IconButton, Menu, Stack, Typography } from '@mui/material';
+import { useLogout, useUser } from '@/hooks';
 
 //import { useLogout, useUser, useFormDialog, useLoggerNotifier } from '@/hooks';
 
 export function Profile() {
-  //const { user, isLoading: userIsLoading } = useUser();
+  const { user, isLoading: userIsLoading } = useUser();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
-  //const { handleLogout, isLoading } = useLogout();
+  const { handleLogout, isLoading } = useLogout();
 
   return (
     <Box>
@@ -28,7 +29,7 @@ export function Profile() {
         }}
         onClick={handleClick}
       >
-        <Avatar src="" alt={`Profile image`} sx={{ width: 45, height: 45, bgcolor:'secondary.main'  }}  />
+        <Avatar src="" alt={`Profile image`} sx={{ width: 45, height: 45, bgcolor: 'secondary.main' }} />
       </IconButton>
 
       <Menu
@@ -48,15 +49,14 @@ export function Profile() {
       >
         <Typography variant="h6">Perfil de usuario</Typography>
         <Stack direction="row" py={3} spacing={2} alignItems="center">
-          <Avatar src="" alt={`Profile image`} sx={{ width: 80, height: 80, bgcolor:'primary.main' }}  />
+          <Avatar src="" alt={`Profile image`} sx={{ width: 80, height: 80, bgcolor: 'primary.main' }} />
           <Box>
             <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
-              {/*{user?.first_name} {user?.last_name}*/} Yurani Ipia
+              {user?.first_name} {user?.last_name}
             </Typography>
             <Typography variant="subtitle2" color="textSecondary" display="flex" alignItems="center" gap={1}>
               <MailOutlineIcon width={20} height={20} />
-              {/* {user?.email} */}
-              yuranidani@gmail.com
+              {user?.email}
             </Typography>
           </Box>
         </Stack>
@@ -74,8 +74,8 @@ export function Profile() {
               variant="text"
               color="primary"
               endIcon={<PowerSettingsNewTwoToneIcon />}
-              //onClick={handleLogout}
-              //loading={isLoading}
+              onClick={handleLogout}
+              loading={isLoading}
             >
               Cerrar sesión
             </Button>
