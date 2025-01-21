@@ -11,7 +11,7 @@ export function useVerify() {
       await verify(undefined).unwrap();
       dispatch(setIsAuthenticated(true));
     } catch (error) {
-      dispatch(setIsAuthenticated(true));
+      dispatch(setIsAuthenticated(false));
     } finally {
       dispatch(setIsLoading(false));
     }
