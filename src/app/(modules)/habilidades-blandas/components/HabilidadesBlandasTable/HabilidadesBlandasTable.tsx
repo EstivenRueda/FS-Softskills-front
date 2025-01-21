@@ -1,12 +1,8 @@
-'use client';
-
-import { AddOutlined as AddOutlinedIcon } from '@mui/icons-material';
-import { LoadingButton as Button } from '@mui/lab';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { PAGE_SIZE_OPTIONS } from '@/consts';
 import { useHabilidadesBlandasTable } from '../../hooks';
-import NextLink from 'next/link'
+import { HabilidadesBlandasTableFilters } from './HabilidadesBlandasTableFilters';
 
 export function HabilidadesBlandasTable() {
   const {
@@ -26,28 +22,11 @@ export function HabilidadesBlandasTable() {
 
   return (
     <>
-      <Typography variant="h3" color="text.primary">
+      <Typography variant="h3" color="text.primary" sx={{ mb: 3 }}>
         Habilidades Blandas
       </Typography>
-      <Stack
-        direction="row"
-        sx={{
-          justifyContent: 'flex-end',
-        }}
-      >
-        <Button
-          startIcon={<AddOutlinedIcon />}
-          variant="contained"
-          color="secondary"
-          LinkComponent={NextLink}
-          type='button'
-          href='/habilidades-blandas/crear'
-        >
-          Crear habilidad blanda
-        </Button>
-      </Stack>
-      {/* filtros */}
-      <Box height={500} width={'100%'} sx={{ marginTop: 5 }}>
+      <HabilidadesBlandasTableFilters onFilterChange={handleFilterModelChange} />
+      <Box height={500} width={'100%'}>
         <DataGrid
           apiRef={apiRef}
           rows={results}

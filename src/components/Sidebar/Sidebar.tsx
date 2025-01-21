@@ -68,7 +68,6 @@ export function Sidebar(props: SidebarProps) {
                 <Image
                   src="/images/logo.png"
                   alt="logo"
-                  objectFit="cover"
                   width={0}
                   height={0}
                   style={{ width: '100%', height: 'auto' }}
@@ -113,7 +112,6 @@ export function Sidebar(props: SidebarProps) {
             <Image
               src="/images/logo.png"
               alt="logo"
-              objectFit="cover"
               width={0}
               height={0}
               style={{ width: '100%', height: 'auto' }}

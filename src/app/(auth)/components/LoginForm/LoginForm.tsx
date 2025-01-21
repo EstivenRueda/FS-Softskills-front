@@ -32,7 +32,6 @@ export function LoginForm() {
         <Image
           src="/images/logo.png"
           alt="logo"
-          objectFit="cover"
           width={0}
           height={0}
           style={{ width: '100%', height: 'auto' }}

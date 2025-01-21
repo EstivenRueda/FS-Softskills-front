@@ -6,14 +6,21 @@ import { useHabilidadBlandaInfoForm } from '../../hooks';
 
 export function HabilidadBlandaInfoForm() {
   const { slug } = useParams<ParamsWithSlug>();
-  const {formContext, handleSubmit, isLoading} = useHabilidadBlandaInfoForm(slug);
+  const { formContext, handleSubmit, isLoading, isViewPage } = useHabilidadBlandaInfoForm(slug);
 
   return (
     <FormContainer formContext={formContext} onSuccess={handleSubmit}>
       <FormSection title="Habilidad blanda" sx={{ p: 5 }}>
-        <TextField name="name" label="Nombre" speech required />
+        <TextField name="name" label="Nombre" speech required disabled={isViewPage} />
       </FormSection>
-      <Button type="submit" loading={isLoading} variant="contained" color="secondary" sx={{float: 'right', marginRight:5}}>
+      <Button
+        type="submit"
+        loading={isLoading}
+        variant="contained"
+        color="secondary"
+        sx={{ float: 'right', marginRight: 5 }}
+        disabled={isViewPage}
+      >
         Guardar
       </Button>
     </FormContainer>

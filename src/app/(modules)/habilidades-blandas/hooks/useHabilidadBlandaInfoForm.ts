@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { getRowGroupingCriteriaFromGroupingField } from '@mui/x-data-grid/internals';
-import { useLoggerNotifier } from '@/hooks';
+import { useIsViewPage, useLoggerNotifier } from '@/hooks';
 import { scrollToTop } from '@/utils';
 import {
   useCreateHabilidadBlandaMutation,
@@ -17,10 +16,12 @@ export function useHabilidadBlandaInfoForm(slug: string) {
   const { data: habilidadBlanda } = useRetrieveHabilidadBlandaQuery(slug, { skip: !slug });
   const [createHabilidadBlanda, { isLoading: createHabilidadBlandaLoading }] = useCreateHabilidadBlandaMutation();
   const [updateHabilidadBlanda, { isLoading: updateHabilidadBlandaLoading }] = useUpdateHabilidadBlandaMutation();
+  const isViewPage = useIsViewPage();
 
   const habilidadBlandaResolver = useHabilidadBlandaResolver();
   const formContext = useForm<HabilidadBlanda>({
     resolver: habilidadBlandaResolver,
+    values: habilidadBlanda,
     mode: 'onChange',
   });
 
@@ -46,5 +47,10 @@ export function useHabilidadBlandaInfoForm(slug: string) {
     }
   };
 
-  return { formContext, isLoading: createHabilidadBlandaLoading || updateHabilidadBlandaLoading, handleSubmit };
+  return {
+    formContext,
+    isLoading: createHabilidadBlandaLoading || updateHabilidadBlandaLoading,
+    isViewPage,
+    handleSubmit,
+  };
 }

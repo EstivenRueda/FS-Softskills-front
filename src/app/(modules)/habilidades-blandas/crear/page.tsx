@@ -1,7 +1,5 @@
-import { HabilidadBlandaForm } from "../components";
+import { HabilidadBlandaForm } from '../components';
 
 export default function CreateHabilidadBlandaPage() {
-  return (
-    <HabilidadBlandaForm stepsEnabled={['habilidad-info']} />
-  )
+  return <HabilidadBlandaForm stepsEnabled={['habilidad-info']} />;
 }

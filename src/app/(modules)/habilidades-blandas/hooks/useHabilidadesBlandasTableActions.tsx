@@ -20,14 +20,14 @@ export  function useHabilidadesBlandasTableActions() {
       label:'Preguntas',
       icon: <QuestionMarkIcon color="secondary" />,
       onClick(){
-        route.push(`/habilidades-blandas/${habilidadBlanda.slug}/editar`);
+        route.push(`/habilidades-blandas/${habilidadBlanda.slug}/editar?step=1`);
       }
     },
     {
       label:'Capacitaciones',
       icon: <FilterIcon color="secondary" />,
       onClick(){
-        route.push(`/habilidades-blandas/${habilidadBlanda.slug}/editar`);
+        route.push(`/habilidades-blandas/${habilidadBlanda.slug}/editar?step=2`);
       }
     },
   ])

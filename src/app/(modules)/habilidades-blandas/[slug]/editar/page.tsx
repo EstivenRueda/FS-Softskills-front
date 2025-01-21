@@ -1,4 +1,5 @@
 import { ParamsWithSlug } from '@/types';
+import { HabilidadBlandaForm } from '../../components';
 
 export type HabilidadBlandaEditarpageProps = {
   params: ParamsWithSlug;
@@ -6,5 +7,5 @@ export type HabilidadBlandaEditarpageProps = {
 
 export default function HabilidadBlandaEditarpage(props: HabilidadBlandaEditarpageProps) {
   const { params } = props;
-  return ;
+  return <HabilidadBlandaForm stepsEnabled={'*'} />;
 }

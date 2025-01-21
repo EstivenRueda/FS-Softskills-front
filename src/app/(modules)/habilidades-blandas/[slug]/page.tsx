@@ -1,5 +1,5 @@
-import { ParamsWithSlug } from '@/types';
 import { redirect } from 'next/navigation';
+import { ParamsWithSlug } from '@/types';
 
 export type HabilidadBlandapageProps = {
   params: ParamsWithSlug;

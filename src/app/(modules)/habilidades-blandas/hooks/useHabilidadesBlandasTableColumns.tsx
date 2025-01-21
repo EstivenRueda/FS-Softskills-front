@@ -1,4 +1,6 @@
 import { useMemo } from 'react';
+import NextLink from 'next/link';
+import { Link } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { MenuActions, StatusSwitch } from '@/components';
 import { usePatchHabilidadBlandaMutation } from '../services';
@@ -28,6 +30,18 @@ export function useHabilidadesBlandasTableColumns() {
         filterable: false,
         headerAlign: 'center',
         flex: 1,
+        renderCell: (params) => (
+          <Link
+            component={NextLink}
+            underline="hover"
+            variant="body2"
+            sx={{ textDecoration: 'none', color: 'primary.main' }}
+            id={params.row.id}
+            href={`/habilidades-blandas/${params.row.slug}/ver`}
+          >
+            {params.row.name}
+          </Link>
+        ),
       },
       {
         field: 'is_active',

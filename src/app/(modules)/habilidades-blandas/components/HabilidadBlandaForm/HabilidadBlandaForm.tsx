@@ -1,5 +1,3 @@
-'use client'
-
 import { FormStepper } from '@/components';
 import { useHabilidadBlandaSteps } from '../../hooks';
 
@@ -11,5 +9,5 @@ export function HabilidadBlandaForm(props: HabilidadBlandaFormProps) {
   const { stepsEnabled } = props;
   const formSteps = useHabilidadBlandaSteps();
 
-  return <FormStepper steps={formSteps} stepsEnabled={stepsEnabled}/>
+  return <FormStepper steps={formSteps} stepsEnabled={stepsEnabled} />;
 }
