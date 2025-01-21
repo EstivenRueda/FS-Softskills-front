@@ -41,7 +41,7 @@ export function HabilidadesBlandasTable() {
           color="secondary"
           LinkComponent={NextLink}
           type='button'
-          href='/habilidades-blandas/create'
+          href='/habilidades-blandas/crear'
         >
           Crear habilidad blanda
         </Button>

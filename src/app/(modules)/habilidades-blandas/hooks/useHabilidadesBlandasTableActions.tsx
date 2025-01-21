@@ -8,7 +8,7 @@ export  function useHabilidadesBlandasTableActions() {
 
   const route = useRouter()
 
-  return useConst<TableActionsFn<HabilidadBlanda>>((habilidadBlanda) => [
+  return useConst<TableActionsFn<HabilidadBlanda>>(()=> (habilidadBlanda: HabilidadBlanda) => [
     {
       label:'Editar',
       icon: <EditIcon color="secondary" />,

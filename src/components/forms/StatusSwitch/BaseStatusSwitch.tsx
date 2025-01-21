@@ -4,16 +4,16 @@ import { styled } from '@mui/material/styles';
 export const BaseStatusSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
-  width: 42,
-  height: 26,
-  padding: 0,
+  width: 46,
+  height: 22,
+  padding: 5,
   '& .MuiSwitch-switchBase': {
     padding: 0,
-    margin: 2,
+    margin: 0,
     transitionDuration: '300ms',
     '&.Mui-checked': {
-      transform: 'translateX(16px)',
-      color: '#fff',
+      transform: 'translateX(20px)',
+      color: theme.palette.secondary.main,
       '& + .MuiSwitch-track': {
         backgroundColor: theme.palette.mode === 'dark' ? theme.palette.success.main : theme.palette.primary.main,
         opacity: 1,
@@ -24,7 +24,7 @@ export const BaseStatusSwitch = styled((props: SwitchProps) => (
       },
     },
     '&.Mui-focusVisible .MuiSwitch-thumb': {
-      color: theme.palette.success.main,
+      color: theme.palette.secondary.main,
       border: '6px solid #fff',
     },
     '&.Mui-disabled .MuiSwitch-thumb': {
@@ -36,12 +36,12 @@ export const BaseStatusSwitch = styled((props: SwitchProps) => (
   },
   '& .MuiSwitch-thumb': {
     boxSizing: 'border-box',
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
   },
   '& .MuiSwitch-track': {
     borderRadius: 26 / 2,
-    backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+    backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#E9E9EA',
     opacity: 1,
     transition: theme.transitions.create(['background-color'], {
       duration: 500,
