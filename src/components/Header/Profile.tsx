@@ -24,11 +24,11 @@ export function Profile() {
         aria-controls="profile-menu"
         aria-haspopup="true"
         sx={{
-          ...(open && { color: 'primary.main' }),
+          ...(open && { color: 'secondary.main' }),
         }}
         onClick={handleClick}
       >
-        <Avatar src="" alt={`Profile image`} sx={{ width: 35, height: 35, bgcolor:'primary.main'  }}  />
+        <Avatar src="" alt={`Profile image`} sx={{ width: 45, height: 45, bgcolor:'secondary.main'  }}  />
       </IconButton>
 
       <Menu

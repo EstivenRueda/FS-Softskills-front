@@ -26,11 +26,12 @@ export function useHabilidadesBlandasTableColumns() {
         headerName: 'Habilidad',
         sortable: false,
         filterable: false,
+        headerAlign: 'center',
         flex: 1,
       },
       {
         field: 'is_active',
-        headerName: 'estado',
+        headerName: 'Estado',
         sortable: false,
         filterable: false,
         headerAlign: 'center',
@@ -48,6 +49,7 @@ export function useHabilidadesBlandasTableColumns() {
       {
         field: 'actions',
         headerName: 'Acciones',
+        headerAlign: 'center',
         sortable: false,
         filterable: false,
         flex: 1,
