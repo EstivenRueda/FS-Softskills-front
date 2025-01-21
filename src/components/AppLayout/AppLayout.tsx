@@ -54,8 +54,8 @@ export function AppLayout(props: AppLayoutProps) {
           }}
         >
           <Header onToggleSidebar={handleToggleSidebar} onToggleMobileSidebar={handleToggleMobileSidebar} />
-          <Container>
-            <Box sx={{ minHeight: 'calc(100vh - 170px)', backgroundColor:"red" }}>{children}</Box>
+          <Container sx={{margin:10}}>
+            <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>{children}</Box>
           </Container>
         </PageWrapper>
       </MainWrapper>

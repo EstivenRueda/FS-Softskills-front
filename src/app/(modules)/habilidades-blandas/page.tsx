@@ -1,5 +1,7 @@
+import { HabilidadesBlandasTable } from "./components";
+
 export default function HabilidadesBlandasPage() {
   return (
-    <div>Habilidades blandas</div>
+    <HabilidadesBlandasTable/>
   )
 }
