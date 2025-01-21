@@ -105,7 +105,6 @@ export function FormStepper(props: FormStepperProps) {
           <Button
             sx={{
               width: 200,
-              color: '#2F3DA9',
               boxShadow: 0.7,
               fontWeight: 600,
             }}
