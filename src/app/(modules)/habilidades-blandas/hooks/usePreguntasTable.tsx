@@ -1,10 +1,10 @@
 import { Refresh as RefreshIcon } from '@mui/icons-material';
 import { GridToolbarActions } from '@/components';
 import { useDataGridStateQuery } from '@/hooks';
-import { useRetrieveHabilidadesBlandasQuery } from '../services';
-import { useHabilidadesBlandasTableColumns } from './useHabilidadesBlandasTableColumns';
+import { usePreguntasTableColumns } from './usePreguntasTableColumns';
+import { useRetrievePreguntasQuery } from '../services';
 
-export function useHabilidadesBlandasTable() {
+export function usePreguntasTable() {
   const {
     apiRef,
     data,
@@ -19,11 +19,11 @@ export function useHabilidadesBlandasTable() {
     setPaginationModel,
     setRowSelectionModel,
   } = useDataGridStateQuery({
-    stateKey: 'habilidades-blandas-grid-state',
-    useRetrieveQuery: useRetrieveHabilidadesBlandasQuery,
+    stateKey: 'preguntas-grid-state',
+    useRetrieveQuery: useRetrievePreguntasQuery,
   });
 
-  const columns = useHabilidadesBlandasTableColumns();
+  const columns = usePreguntasTableColumns();
 
   const toolbar = () => (
     <GridToolbarActions
