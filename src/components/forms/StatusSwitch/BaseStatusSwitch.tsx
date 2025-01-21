@@ -12,7 +12,7 @@ export const BaseStatusSwitch = styled((props: SwitchProps) => (
     margin: 0,
     transitionDuration: '300ms',
     '&.Mui-checked': {
-      transform: 'translateX(20px)',
+      transform: 'translateX(22px)',
       color: theme.palette.secondary.main,
       '& + .MuiSwitch-track': {
         backgroundColor: theme.palette.mode === 'dark' ? theme.palette.success.main : theme.palette.primary.main,
