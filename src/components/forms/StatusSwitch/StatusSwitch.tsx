@@ -6,6 +6,7 @@ import { BaseStatusSwitch } from './BaseStatusSwitch';
 
 export type StatusSwitchProps = {
   id: string;
+  slug?: string;
   isActive: boolean;
   usePatchMutation: TypedUseMutation<any, any, any>;
   disabled?: boolean;
@@ -13,7 +14,7 @@ export type StatusSwitchProps = {
 };
 
 export function StatusSwitch(props: StatusSwitchProps) {
-  const { id, isActive, usePatchMutation, disabled, onComplete } = props;
+  const { id, slug, isActive, usePatchMutation, disabled, onComplete } = props;
   const { notify } = useLoggerNotifier();
   const { showConfirmDialog } = useConfirmDialog();
   const [patch, { isLoading }] = usePatchMutation();
@@ -31,7 +32,8 @@ export function StatusSwitch(props: StatusSwitchProps) {
         : 'Estoy seguro que quiero activar este registro.',
       async onConfirm() {
         try {
-          const patchedRecord = await patch({ id, is_active: !isActive }).unwrap();
+          const patchObj = slug ? { slug, is_active: !isActive } : { id, is_active: !isActive };
+          const patchedRecord = await patch(patchObj).unwrap();
           notify('Actualizado exitosamente', 'success');
           onComplete?.(patchedRecord);
         } catch (error) {

@@ -41,6 +41,7 @@ export function useHabilidadesBlandasTableColumns() {
         renderCell: (params) => (
           <StatusSwitch
             id={params.row.id}
+            slug={params.row.slug}
             isActive={params.row.is_active}
             usePatchMutation={usePatchHabilidadBlandaMutation}
           />
