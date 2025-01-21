@@ -72,7 +72,7 @@ export function FormStepper(props: FormStepperProps) {
               key={step.title}
               icon={step.icon}
               label={
-                <Typography fontSize={15} mb={2} width={90} align="center">
+                <Typography fontSize={15} mb={2} width={120} align="center">
                   {step.title}
                 </Typography>
               }

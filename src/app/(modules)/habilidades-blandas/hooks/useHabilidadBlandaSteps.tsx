@@ -1,6 +1,10 @@
-import { Psychology as PsychologyIcon } from '@mui/icons-material';
+import {
+  Psychology as PsychologyIcon,
+  Filter as FilterIcon,
+  Quiz as QuizIcon
+} from '@mui/icons-material';
 import { useConst } from '@/hooks';
-import { HabilidadBlandaInfoForm, PreguntasTable } from '../components';
+import { CapacitacionesTable, HabilidadBlandaInfoForm, PreguntasTable } from '../components';
 
 export function useHabilidadBlandaSteps() {
   return useConst([
@@ -13,8 +17,14 @@ export function useHabilidadBlandaSteps() {
     {
       name: 'preguntas-table',
       title: 'Preguntas',
-      icon: <PsychologyIcon fontSize="large" />,
+      icon: <QuizIcon fontSize="large" />,
       component: <PreguntasTable />
+    },
+    {
+      name: 'capacitaciones-table',
+      title: 'Capacitaciones',
+      icon: <FilterIcon fontSize="large" />,
+      component: <CapacitacionesTable />
     }
   ]);
 }
