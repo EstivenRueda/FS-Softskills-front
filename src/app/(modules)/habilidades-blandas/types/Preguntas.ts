@@ -3,6 +3,7 @@ export type Opcion = {
   question?: string;
   option: string;
   grade: number;
+  display_name?: string;
 };
 
 export type Pregunta = {

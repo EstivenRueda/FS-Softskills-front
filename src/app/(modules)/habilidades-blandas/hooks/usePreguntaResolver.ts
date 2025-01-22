@@ -12,6 +12,10 @@ export function usePreguntaResolver() {
           .string({ required_error })
           .min(3, 'La pregunta debe tener minimo 3 caracteres')
           .max(255, 'La pregunta debe tener máximo 255 caracteres'),
+        order: z
+          .number({ required_error, invalid_type_error: required_error })
+          .int()
+          .min(0, 'El orden debe ser mayor o igual a 0'),
         options: z.array(
           z.object({
             option: z.string({ required_error }),

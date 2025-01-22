@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { LoadingButton as Button } from '@mui/lab';
-import { Box, Stack } from '@mui/material';
-import { Autocomplete, FormContainer, FormSection, NumericTextField, TextareaAutosize, TextField } from '@/components';
+import { Box, Stack, Typography } from '@mui/material';
+import { FormContainer, FormSection, NumericTextField, TextareaAutosize } from '@/components';
 import { usePreguntaForm, UsePreguntaFormOptions } from '../../hooks';
 
 export type PreguntaFormProps = UsePreguntaFormOptions;
@@ -24,16 +24,9 @@ export function PreguntaForm(props: PreguntaFormProps) {
         <FormSection title="Opciones" columns={2}>
           {fields.map((field, index) => (
             <Fragment key={field.id}>
-              <Autocomplete
-                disabled={isViewPage}
-                name={`options[${index}].option`}
-                label={`Opción ${index + 1}`}
-                options={likertOptions}
-                valueKey="value"
-                labelKey="display_name"
-                matchId
-                required
-              />
+              <Box display={'flex'} alignItems={'center'}>
+                <Typography variant="h6">{field.display_name}</Typography>
+              </Box>
               <NumericTextField name={`options[${index}].grade`} label="Puntaje" required disabled={isViewPage} />
             </Fragment>
           ))}

@@ -45,7 +45,7 @@ export function usePreguntaForm(options: UsePreguntaFormOptions) {
     if (!!!pregunta && likertOptions && !!likertOptions.length) {
       reset({
         ...formContext.getValues(),
-        options: likertOptions.map(option => ({ option: option.value, grade: 0 })),
+        options: likertOptions.map(option => ({ display_name: option.display_name, option: option.value, grade: 0 })),
       });
     }
   }, [likertOptions, reset]);
