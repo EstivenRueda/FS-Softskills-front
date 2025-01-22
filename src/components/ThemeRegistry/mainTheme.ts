@@ -39,7 +39,7 @@ export const palette = {
     contrastText: '#fff',
   },
   error: {
-    main: '#CF0E7B',
+    main: '#CD5C5C',
     light: '#CF0E7B',
     dark: '#c62828',
     contrastText: '#fff',

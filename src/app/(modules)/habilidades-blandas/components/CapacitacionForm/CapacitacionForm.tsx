@@ -1,28 +1,33 @@
-import { useParams } from 'next/navigation';
 import { LoadingButton as Button } from '@mui/lab';
+import { Box, Stack } from '@mui/material';
 import { FormContainer, FormSection, TextField } from '@/components';
-import { ParamsWithSlug } from '@/types';
-import { useCapacitacionForm } from '../../hooks';
+import { useCapacitacionForm, UseCapacitacionFormOptions } from '../../hooks';
 
-export function CapacitacionForm() {
-  const { slug } = useParams<ParamsWithSlug>();
-  const { formContext, handleSubmit, isLoading, isViewPage } = useCapacitacionForm(slug);
+export type CapacitacionFormProps = UseCapacitacionFormOptions;
+
+export function CapacitacionForm(props: CapacitacionFormProps) {
+  const { formContext, handleSubmit, isLoading, isViewPage } = useCapacitacionForm(props);
 
   return (
-    <FormContainer formContext={formContext} onSuccess={handleSubmit}>
-      <FormSection title="Capacitacion" sx={{ p: 5 }}>
-        <TextField name="name" label="Nombre" speech required disabled={isViewPage} />
-      </FormSection>
-      <Button
-        type="submit"
-        loading={isLoading}
-        variant="contained"
-        color="secondary"
-        sx={{ float: 'right', marginRight: 5 }}
-        disabled={isViewPage}
-      >
-        Guardar
-      </Button>
-    </FormContainer>
+    <Box p={3}>
+      <FormContainer formContext={formContext} onSuccess={handleSubmit}>
+        <FormSection columns={1} gap={3} sx={{ m: 2 }}>
+          <TextField name="title" label="Título" speech required disabled={isViewPage} />
+          <TextField name="description" label="Descripción" speech required disabled={isViewPage} />
+          <TextField name="link" label="Link" speech required disabled={isViewPage} />
+        </FormSection>
+        <Stack direction="row" spacing={4} justifyContent="right" marginX={2} marginY={3} >
+          <Button
+            type="submit"
+            loading={isLoading}
+            variant="contained"
+            color="secondary"
+            disabled={isViewPage}
+          >
+            Guardar
+          </Button>
+        </Stack>
+      </FormContainer>
+    </Box>
   );
 }

@@ -16,4 +16,5 @@ export * from './useCapacitacionesTableColumns';
 export * from './useCapacitacionesTableActions';
 export * from './useCapacitacionesTableFilters';
 export * from './useCapacitacionForm';
+export * from './useCapacitacionResolver';
 

@@ -18,15 +18,16 @@ export function CapacitacionesTable() {
     setPaginationModel,
     columns,
     toolbar,
+    handleCreate,
   } = useCapacitacionesTable();
 
   return (
     <>
-      <Typography variant="h3" color="text.primary" sx={{ mb: 3 }}>
+      <Typography variant="h4" color="text.primary" sx={{ mb: 3 }}>
         Capacitaciones
       </Typography>
-      <CapacitacionesTableFilters onFilterChange={handleFilterModelChange} />
-      <Box height={500} width={'100%'}>
+      <CapacitacionesTableFilters handleCreate={handleCreate} onFilterChange={handleFilterModelChange} />
+      <Box height={300} width={'100%'}>
         <DataGrid
           apiRef={apiRef}
           rows={results}

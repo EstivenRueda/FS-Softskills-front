@@ -12,10 +12,12 @@ import { useCapacitacionesTableFilters } from '../../hooks';
 
 export type CapacitacionesFiltersProps = {
   onFilterChange?: (filterModel: GridFilterModel) => void;
+  handleCreate: () => void;
 };
 
 export function CapacitacionesTableFilters(props: CapacitacionesFiltersProps) {
   const { formContext, handleReset } = useCapacitacionesTableFilters(props);
+  const {handleCreate} = props
 
   return (
     <FormContainer
@@ -68,12 +70,11 @@ export function CapacitacionesTableFilters(props: CapacitacionesFiltersProps) {
       </IconButton>
       <Button
         startIcon={<AddOutlinedIcon />}
-        LinkComponent={NextLink}
-        href="/habilidades-blandas/crear"
         type="button"
         variant="contained"
         color="secondary"
         sx={{ minWidth: '25%' }}
+        onClick={handleCreate}
       >
         Crear Capacitación
       </Button>
