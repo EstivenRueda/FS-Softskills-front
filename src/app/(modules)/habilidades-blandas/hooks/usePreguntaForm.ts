@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { useParams } from 'next/navigation';
 import { useIsViewPage, useLoggerNotifier } from '@/hooks';
@@ -27,20 +28,27 @@ export function usePreguntaForm(options: UsePreguntaFormOptions) {
   const [createPregunta, { isLoading: createPreguntaLoading }] = useCreatePreguntaMutation();
   const [updatePregunta, { isLoading: updatePreguntaLoading }] = useUpdatePreguntaMutation();
 
-  const baseOptions = likertOptions?.map((option) => ({ option: option.value }));
-
   const preguntaResolver = usePreguntaResolver();
   const formContext = useForm<Pregunta>({
     resolver: preguntaResolver,
     values: pregunta,
     defaultValues: {
-      options: pregunta?.options || baseOptions,
+      options: pregunta?.options || [],
     },
     mode: 'onChange',
   });
 
-  const { control } = formContext;
+  const { control, reset } = formContext;
   const { fields, append, remove } = useFieldArray({ control, name: 'options' });
+
+  useEffect(() => {
+    if (!!!pregunta && likertOptions && !!likertOptions.length) {
+      reset({
+        ...formContext.getValues(),
+        options: likertOptions.map(option => ({ option: option.value, grade: 0 })),
+      });
+    }
+  }, [likertOptions, reset]);
 
   const handleSubmit = async (data: Pregunta) => {
     try {
@@ -50,7 +58,7 @@ export function usePreguntaForm(options: UsePreguntaFormOptions) {
       }
 
       if (pregunta) {
-        await updatePregunta({ ...pregunta, ...data, softskill: habilidadBlanda.id }).unwrap();
+        await updatePregunta({ ...pregunta, ...data, softskill: habilidadBlanda.id, options: [...pregunta.options, ...data.options] }).unwrap();
         notify('Pregunta actualizada correctamente', 'success');
         onCompleted?.();
         return;

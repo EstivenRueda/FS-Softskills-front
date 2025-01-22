@@ -1,6 +1,6 @@
 export type Opcion = {
-  id: string;
-  question: string;
+  id?: string;
+  question?: string;
   option: string;
   grade: number;
 };
