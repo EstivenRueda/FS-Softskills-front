@@ -15,14 +15,14 @@ export function usePreguntaResolver() {
         order: z
           .number({ required_error, invalid_type_error: required_error })
           .int()
-          .min(0, 'El orden debe ser mayor o igual a 0'),
+          .min(1, 'El orden debe ser mayor o igual a 1'),
         options: z.array(
           z.object({
             option: z.string({ required_error }),
             grade: z
               .number({ required_error, invalid_type_error: required_error })
               .int()
-              .min(0, 'El puntaje debe ser mayor o igual a 0'),
+              .min(1, 'El puntaje debe ser mayor o igual a 1'),
           })
         ),
       })
