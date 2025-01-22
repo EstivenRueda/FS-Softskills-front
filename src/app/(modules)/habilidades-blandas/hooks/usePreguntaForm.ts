@@ -45,7 +45,7 @@ export function usePreguntaForm(options: UsePreguntaFormOptions) {
     if (!!!pregunta && likertOptions && !!likertOptions.length) {
       reset({
         ...formContext.getValues(),
-        options: likertOptions.map(option => ({ display_name: option.display_name, option: option.value, grade: 0 })),
+        options: likertOptions.map((option) => ({ display_name: option.display_name, option: option.value, grade: 1 })),
       });
     }
   }, [likertOptions, reset]);
@@ -58,7 +58,10 @@ export function usePreguntaForm(options: UsePreguntaFormOptions) {
       }
 
       if (pregunta) {
-        await updatePregunta({ ...pregunta, ...data, softskill: habilidadBlanda.id, options: [...pregunta.options, ...data.options] }).unwrap();
+        await updatePregunta({
+          ...pregunta,
+          ...data,
+        }).unwrap();
         notify('Pregunta actualizada correctamente', 'success');
         onCompleted?.();
         return;

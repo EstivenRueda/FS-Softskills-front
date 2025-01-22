@@ -14,7 +14,7 @@ const preguntasApi = baseApi.injectEndpoints({
     }),
     retrievePregunta: builder.query<Pregunta, string>({
       query: (slug) => `/softskills/questions/${slug}/`,
-      providesTags: ['Habilidades'],
+      providesTags: ['Preguntas'],
     }),
     createPregunta: builder.mutation<Pregunta, Partial<Pregunta>>({
       query: (pregunta) => ({
@@ -22,7 +22,7 @@ const preguntasApi = baseApi.injectEndpoints({
         method: 'POST',
         body: pregunta,
       }),
-      invalidatesTags: ['Habilidades'],
+      invalidatesTags: ['Preguntas'],
     }),
     updatePregunta: builder.mutation<Pregunta, Partial<Pregunta>>({
       query: ({ id, ...pregunta }) => ({
@@ -30,7 +30,7 @@ const preguntasApi = baseApi.injectEndpoints({
         method: 'PUT',
         body: pregunta,
       }),
-      invalidatesTags: ['Habilidades'],
+      invalidatesTags: ['Preguntas'],
     }),
     patchPregunta: builder.mutation<Pregunta, Partial<Pregunta>>({
       query: ({ id, ...pregunta }) => ({
@@ -38,14 +38,14 @@ const preguntasApi = baseApi.injectEndpoints({
         method: 'PATCH',
         body: pregunta,
       }),
-      invalidatesTags: ['Habilidades'],
+      invalidatesTags: ['Preguntas'],
     }),
     deletePregunta: builder.mutation<void, string>({
       query: (id) => ({
         url: `/softskills/questions/${id}/`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Habilidades'],
+      invalidatesTags: ['Preguntas'],
     }),
     retrieveLikertOptions: builder.query<PlainParameter[], void>({
       query: () => '/softskills/likert-options/',
