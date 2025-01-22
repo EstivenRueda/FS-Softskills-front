@@ -25,6 +25,16 @@ export function usePreguntasTableColumns() {
         renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1,
       },
       {
+        field: 'order',
+        headerName: 'Orden',
+        sortable: false,
+        filterable: false,
+        hideable: false,
+        headerAlign: 'center',
+        align: 'center',
+        width: 80,
+      },
+      {
         field: 'description',
         headerName: 'Pregunta',
         sortable: false,

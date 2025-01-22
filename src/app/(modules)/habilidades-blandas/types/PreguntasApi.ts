@@ -7,4 +7,5 @@ export type PreguntasArgs = PaginationArgs & {
   search?: string;
   isActive?: BooleanString;
   softskillId?: string;
+  softskillSlug?: string;
 };
