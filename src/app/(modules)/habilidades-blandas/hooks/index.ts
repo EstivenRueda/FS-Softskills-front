@@ -11,3 +11,5 @@ export * from './usePreguntasTable';
 export * from './usePreguntasTableActions';
 export * from './usePreguntasTableColumns';
 export * from './usePreguntasTableFilters';
+export * from './useCapacitacionesTable';
+
