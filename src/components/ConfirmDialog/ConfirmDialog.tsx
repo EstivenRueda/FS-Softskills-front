@@ -80,10 +80,8 @@ export function ConfirmDialog(props: ConfirmDialogProps) {
               </Typography>
             </Alert>
           ) : null}
-          <DialogContentText my={3}>
-            <Typography fontSize={16} color={'#2A3547'} fontWeight={400} variant="subtitle2">
-              {description}
-            </Typography>
+          <DialogContentText my={3} variant="subtitle2" color={'#2A3547'} fontSize={16} fontWeight={400}>
+            {description}
           </DialogContentText>
           {checkbox ? (
             <FormControlLabel
