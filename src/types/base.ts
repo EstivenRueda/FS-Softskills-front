@@ -56,3 +56,8 @@ export type ContentType = {
   app_label: string;
   model: string;
 };
+
+export type PlainParameter = {
+  display_name: string;
+  value: string;
+};

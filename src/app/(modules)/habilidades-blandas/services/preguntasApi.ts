@@ -1,4 +1,5 @@
 import { baseApi } from '@/services';
+import { PlainParameter } from '@/types';
 import { getFilterParams } from '@/utils';
 import { Pregunta, PreguntasArgs, PreguntasResult } from '../types';
 
@@ -46,6 +47,9 @@ const preguntasApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['Habilidades'],
     }),
+    retrieveLikertOptions: builder.query<PlainParameter[], void>({
+      query: () => '/softskills/likert-options/',
+    }),
   }),
   overrideExisting: false,
 });
@@ -57,4 +61,5 @@ export const {
   useUpdatePreguntaMutation,
   usePatchPreguntaMutation,
   useDeletePreguntaMutation,
+  useRetrieveLikertOptionsQuery,
 } = preguntasApi;

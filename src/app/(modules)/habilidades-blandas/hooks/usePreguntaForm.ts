@@ -1,8 +1,13 @@
-import { useForm } from 'react-hook-form';
+import { useFieldArray, useForm } from 'react-hook-form';
 import { useParams } from 'next/navigation';
 import { useIsViewPage, useLoggerNotifier } from '@/hooks';
 import { ParamsWithSlug } from '@/types';
-import { useCreatePreguntaMutation, useRetrieveHabilidadBlandaQuery, useUpdatePreguntaMutation } from '../services';
+import {
+  useCreatePreguntaMutation,
+  useRetrieveHabilidadBlandaQuery,
+  useRetrieveLikertOptionsQuery,
+  useUpdatePreguntaMutation,
+} from '../services';
 import { Pregunta } from '../types';
 import { usePreguntaResolver } from './usePreguntaResolver';
 
@@ -18,15 +23,24 @@ export function usePreguntaForm(options: UsePreguntaFormOptions) {
   const isViewPage = useIsViewPage();
 
   const { data: habilidadBlanda, isLoading: habilidadBlandaLoading } = useRetrieveHabilidadBlandaQuery(slug);
+  const { data: likertOptions, isLoading: likertOptionsLoading } = useRetrieveLikertOptionsQuery();
   const [createPregunta, { isLoading: createPreguntaLoading }] = useCreatePreguntaMutation();
   const [updatePregunta, { isLoading: updatePreguntaLoading }] = useUpdatePreguntaMutation();
+
+  const baseOptions = likertOptions?.map((option) => ({ option: option.value }));
 
   const preguntaResolver = usePreguntaResolver();
   const formContext = useForm<Pregunta>({
     resolver: preguntaResolver,
     values: pregunta,
+    defaultValues: {
+      options: pregunta?.options || baseOptions,
+    },
     mode: 'onChange',
   });
+
+  const { control } = formContext;
+  const { fields, append, remove } = useFieldArray({ control, name: 'options' });
 
   const handleSubmit = async (data: Pregunta) => {
     try {
@@ -57,7 +71,9 @@ export function usePreguntaForm(options: UsePreguntaFormOptions) {
   return {
     formContext,
     handleSubmit,
-    isLoading: habilidadBlandaLoading || createPreguntaLoading || updatePreguntaLoading,
+    isLoading: habilidadBlandaLoading || createPreguntaLoading || updatePreguntaLoading || likertOptionsLoading,
     isViewPage,
+    likertOptions,
+    fields,
   };
 }
