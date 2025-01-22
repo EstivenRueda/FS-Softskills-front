@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { Box, Container, styled, useTheme } from '@mui/material';
-import { Header, ProtectedPage, Sidebar } from '@/components';
+import { Breadcrumbs, Header, ProtectedPage, Sidebar } from '@/components';
 import { MINI_SIDEBAR_WIDTH } from '../Sidebar';
 
 const MainWrapper = styled('main')(() => ({
@@ -54,7 +54,10 @@ export function AppLayout(props: AppLayoutProps) {
         >
           <Header onToggleSidebar={handleToggleSidebar} onToggleMobileSidebar={handleToggleMobileSidebar} />
           <Container>
-            <Box sx={{ minHeight: 'calc(100vh - 170px)', pt:5 }}>{children}</Box>
+            <Box sx={{ minHeight: 'calc(100vh - 170px)', pt: 5 }}>
+              <Breadcrumbs sx={{ mb: 4 }} />
+              {children}
+            </Box>
           </Container>
         </PageWrapper>
       </MainWrapper>
