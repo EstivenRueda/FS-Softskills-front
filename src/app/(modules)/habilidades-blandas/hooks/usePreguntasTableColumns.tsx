@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { VisibilityOutlined as VisibilityOutlinedIcon } from '@mui/icons-material';
-import { Typography } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { MenuActions, PopoverButton, StatusSwitch } from '@/components';
 import { usePatchPreguntaMutation } from '../services';
@@ -37,11 +37,13 @@ export function usePreguntasTableColumns() {
             id={params.row.id}
             variant={'text'}
             buttonText={params.row.description}
-            title={'Opciones'}
+            title={'Pregunta'}
             icon={<VisibilityOutlinedIcon color={'primary'} style={{ fontSize: 30 }} />}
-            sx={{ maxWidth: 900 }}
+            sx={{ maxWidth: 800 }}
             content={
               <>
+                <Typography fontSize={18}>{params.row.description}</Typography>
+                <Divider sx={{ my: 2 }} />
                 {params.row.options.map((option: Opcion) => (
                   <Typography key={option.id} variant="body2">
                     {option.display_name}: {option.grade}

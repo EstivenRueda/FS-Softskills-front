@@ -46,7 +46,12 @@ export function PopoverButton({
 
   return (
     <>
-      <Button aria-describedby={id} variant={variant} onClick={handleClick} sx={{ justifyContent: 'flex-start' }}>
+      <Button
+        aria-describedby={id}
+        variant={variant}
+        onClick={handleClick}
+        sx={{ justifyContent: 'flex-start', maxWidth: '100%' }}
+      >
         <Typography
           color={colorButton}
           variant={variantButton}
