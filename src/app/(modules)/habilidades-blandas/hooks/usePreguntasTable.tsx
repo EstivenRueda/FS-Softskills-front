@@ -1,11 +1,14 @@
+import { useParams } from 'next/navigation';
 import { Add as AddIcon, Refresh as RefreshIcon } from '@mui/icons-material';
 import { GridToolbarActions } from '@/components';
 import { useDataGridStateQuery, useFormDialog } from '@/hooks';
+import { ParamsWithSlug } from '@/types';
 import { PreguntaForm } from '../components';
 import { useRetrievePreguntasQuery } from '../services';
 import { usePreguntasTableColumns } from './usePreguntasTableColumns';
 
 export function usePreguntasTable() {
+  const { slug } = useParams<ParamsWithSlug>();
   const {
     apiRef,
     data,
@@ -22,6 +25,7 @@ export function usePreguntasTable() {
   } = useDataGridStateQuery({
     stateKey: 'preguntas-grid-state',
     useRetrieveQuery: useRetrievePreguntasQuery,
+    queryArgs: { softskillSlug: slug },
   });
 
   const columns = usePreguntasTableColumns();
