@@ -12,4 +12,8 @@ export * from './usePreguntasTableActions';
 export * from './usePreguntasTableColumns';
 export * from './usePreguntasTableFilters';
 export * from './useCapacitacionesTable';
+export * from './useCapacitacionesTableColumns';
+export * from './useCapacitacionesTableActions';
+export * from './useCapacitacionesTableFilters';
+export * from './useCapacitacionForm';
 

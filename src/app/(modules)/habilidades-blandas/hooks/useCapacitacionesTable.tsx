@@ -1,6 +1,8 @@
 import { Refresh as RefreshIcon } from '@mui/icons-material';
 import { GridToolbarActions } from '@/components';
 import { useDataGridStateQuery } from '@/hooks';
+import { useRetrieveCapacitacionesQuery } from '../services';
+import { useCapacitacionesTableColumns } from './useCapacitacionesTableColumns';
 
 export function useCapacitacionesTable() {
   const {
@@ -21,7 +23,7 @@ export function useCapacitacionesTable() {
     useRetrieveQuery: useRetrieveCapacitacionesQuery,
   });
 
-  const columns = useCapacitacionesColumns();
+  const columns = useCapacitacionesTableColumns();
 
   const toolbar = () => (
     <GridToolbarActions

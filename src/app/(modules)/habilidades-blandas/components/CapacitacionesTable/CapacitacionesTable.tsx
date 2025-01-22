@@ -23,7 +23,7 @@ export function CapacitacionesTable() {
   return (
     <>
       <Typography variant="h3" color="text.primary" sx={{ mb: 3 }}>
-        Habilidades Blandas
+        Capacitaciones
       </Typography>
       <CapacitacionesTableFilters onFilterChange={handleFilterModelChange} />
       <Box height={500} width={'100%'}>
