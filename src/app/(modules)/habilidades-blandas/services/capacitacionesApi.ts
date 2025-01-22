@@ -7,7 +7,7 @@ const capacitacionesApi = baseApi.injectEndpoints({
     retrieveCapacitaciones: builder.query<CapacitacionesResult, CapacitacionesArgs>({
       query: ({ page, pageSize, isActive = true, ...params }) => {
         const filterParams = getFilterParams(params);
-        return `/softskills/softskill-trainings/?is_active=${isActive}&page=${page + 1}&page_Size=${pageSize}${filterParams}`;
+        return `/softskills/softskill-trainings/?is_active=${isActive}&page=${page + 1}&page_size=${pageSize}${filterParams}`;
       },
 
       providesTags: ['Capacitaciones'],

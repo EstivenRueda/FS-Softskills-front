@@ -8,7 +8,7 @@ const preguntasApi = baseApi.injectEndpoints({
     retrievePreguntas: builder.query<PreguntasResult, PreguntasArgs>({
       query: ({ page, pageSize, isActive = true, ...params }) => {
         const filterParams = getFilterParams(params);
-        return `/softskills/questions/?is_active=${isActive}&page=${page + 1}&page_Size=${pageSize}${filterParams}`;
+        return `/softskills/questions/?is_active=${isActive}&page=${page + 1}&page_size=${pageSize}${filterParams}`;
       },
       providesTags: ['Preguntas'],
     }),

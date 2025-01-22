@@ -7,7 +7,7 @@ const habilidadesBlandasApi = baseApi.injectEndpoints({
     retrieveHabilidadesBlandas: builder.query<HabilidadBlandasResult, HabilidadBlandaArgs>({
       query: ({ page, pageSize, isActive = true, ...params }) => {
         const filterParams = getFilterParams(params);
-        return `/softskills/softskills/?is_active=${isActive}&page=${page + 1}&page_Size=${pageSize}${filterParams}`;
+        return `/softskills/softskills/?is_active=${isActive}&page=${page + 1}&page_size=${pageSize}${filterParams}`;
       },
       providesTags: ['Habilidades'],
     }),

@@ -36,12 +36,12 @@ export function PreguntasTable() {
           onRowSelectionModelChange={handleRowSelectionModelChange}
           initialState={initialState}
           loading={isLoading}
-          paginationModel={paginationModel}
           paginationMode="server"
+          paginationModel={paginationModel}
+          onPaginationModelChange={setPaginationModel}
           filterMode="server"
           rowCount={rowCountState}
           rowSelectionModel={rowSelectionModel}
-          onPaginationModelChange={setPaginationModel}
           pageSizeOptions={PAGE_SIZE_OPTIONS}
           checkboxSelection={false}
           disableRowSelectionOnClick
