@@ -1,5 +1,7 @@
+import { MisHabilidadesBlandasTable } from "./components";
+
 export default function MisHabilidadesPage() {
   return (
-    <div>Mis Habilidades</div>
+    <MisHabilidadesBlandasTable/>
   )
 }
