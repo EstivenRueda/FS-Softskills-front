@@ -14,7 +14,7 @@ export function EmptyStateTable(props: EmptyStateTableProps) {
 
   return (
     <Grid height="100%" container display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-      <Image src="/images/backgrounds/emptyState.svg" alt="setting" width="100" height="100" />
+      <Image src="/images/emptyFolder.png" alt="setting" width="100" height="100" />
       <Typography fontSize={18} mt={3}>
         {title ?? 'No se encontraron registros asociados'}
       </Typography>
