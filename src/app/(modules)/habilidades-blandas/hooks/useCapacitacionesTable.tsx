@@ -1,9 +1,9 @@
 import { Add as AddIcon, Refresh as RefreshIcon } from '@mui/icons-material';
 import { GridToolbarActions } from '@/components';
 import { useDataGridStateQuery, useFormDialog } from '@/hooks';
+import { CapacitacionForm } from '../components/CapacitacionForm';
 import { useRetrieveCapacitacionesQuery } from '../services';
 import { useCapacitacionesTableColumns } from './useCapacitacionesTableColumns';
-import { CapacitacionForm } from '../components/CapacitacionForm';
 
 export function useCapacitacionesTable() {
   const {
@@ -26,7 +26,6 @@ export function useCapacitacionesTable() {
 
   const columns = useCapacitacionesTableColumns();
   const { showFormDialog } = useFormDialog();
-
 
   const handleCreate = () => {
     const modal = showFormDialog({

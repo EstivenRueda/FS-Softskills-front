@@ -3,12 +3,11 @@ import NextLink from 'next/link';
 import { Link } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { MenuActions, StatusSwitch } from '@/components';
-import { usePatchHabilidadBlandaMutation } from '../services';
+import { usePatchCapacitacionMutation } from '../services';
 import { useCapacitacionesTableActions } from './useCapacitacionesTableActions';
 
 export function useCapacitacionesTableColumns() {
   const getTableActions = useCapacitacionesTableActions();
-
 
   return useMemo<GridColDef[]>(
     () => [
@@ -60,9 +59,8 @@ export function useCapacitacionesTableColumns() {
         renderCell: (params) => (
           <StatusSwitch
             id={params.row.id}
-            slug={params.row.slug}
             isActive={params.row.is_active}
-            usePatchMutation={usePatchHabilidadBlandaMutation}
+            usePatchMutation={usePatchCapacitacionMutation}
           />
         ),
       },
@@ -77,7 +75,7 @@ export function useCapacitacionesTableColumns() {
         hideable: false,
         renderCell: (params) => <MenuActions actions={getTableActions(params.row)} />,
       },
-
-    ],[getTableActions]
-  )
+    ],
+    [getTableActions]
+  );
 }

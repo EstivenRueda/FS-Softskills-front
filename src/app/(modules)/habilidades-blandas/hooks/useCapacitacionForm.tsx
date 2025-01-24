@@ -1,5 +1,5 @@
-import {useForm } from 'react-hook-form';
-import { useParams} from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { useParams } from 'next/navigation';
 import { useIsViewPage, useLoggerNotifier } from '@/hooks';
 import { ParamsWithSlug } from '@/types';
 import {

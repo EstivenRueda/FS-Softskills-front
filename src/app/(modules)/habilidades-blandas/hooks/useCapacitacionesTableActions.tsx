@@ -1,10 +1,10 @@
 import { useRouter } from 'next/navigation';
-import { Edit as EditIcon, Delete as DeleteIcon,  } from '@mui/icons-material';
+import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import { useConfirmDialog, useConst, useFormDialog, useLoggerNotifier } from '@/hooks';
 import { TableActionsFn } from '@/types';
 import { CapacitacionForm } from '../components';
-import { Capacitacion } from '../types';
 import { useDeleteCapacitacionMutation } from '../services';
+import { Capacitacion } from '../types';
 
 export function useCapacitacionesTableActions() {
   const route = useRouter();
