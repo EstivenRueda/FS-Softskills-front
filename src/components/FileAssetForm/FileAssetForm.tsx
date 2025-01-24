@@ -29,8 +29,7 @@ export function FileAssetForm(props: FileAssetFormProps) {
             <DropzoneArea
               acceptedFiles={acceptedFiles}
               name="path"
-              initialFiles={initialFiles}
-              dropzoneText="Click aquí para buscar archivos (4 MB max)"
+              // initialFiles={initialFiles}
             />
             {textFormats && (
               <Typography color="GrayText" variant="body2">

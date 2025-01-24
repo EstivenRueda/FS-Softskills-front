@@ -1,13 +1,14 @@
 import { useRouter } from 'next/navigation';
 import { Edit as EditIcon, BackupOutlined as BackupOutlinedIcon, Delete as DeleteIcon } from '@mui/icons-material';
+import { FileAssetForm } from '@/components';
+import { ACCEPTED_FILES_WITH_IMAGES } from '@/consts';
 import { useConfirmDialog, useConst, useFormDialog, useLoggerNotifier } from '@/hooks';
 import { TableActionsFn } from '@/types';
 import { CapacitacionForm } from '../components';
 import { useDeleteCapacitacionMutation } from '../services';
 import { Capacitacion } from '../types';
-import { ACCEPTED_FILES_WITH_IMAGES } from '@/consts';
 
-export function useCapacitacionesTableActions(contentTypePerson:number) {
+export function useCapacitacionesTableActions(contentTypePerson: number) {
   const route = useRouter();
   const { showFormDialog } = useFormDialog();
   const { showConfirmDialog } = useConfirmDialog();
@@ -38,7 +39,7 @@ export function useCapacitacionesTableActions(contentTypePerson:number) {
           children: (
             <FileAssetForm
               acceptedFiles={ACCEPTED_FILES_WITH_IMAGES}
-              textFormats='Formatos: PDF, XLSM, PPT, PPTX, CVS, JPG, PNG'
+              textFormats="Formatos: PDF, XLSM, PPT, PPTX, CVS, JPG, PNG"
               sourceId={capacitacion.id}
               contentType={contentTypePerson}
               onCompleted={() => modal.hide()}
