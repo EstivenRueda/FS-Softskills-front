@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import { EmptyStateTable } from '@/components';
 import { PAGE_SIZE_OPTIONS } from '@/consts';
 import { useCapacitacionesTable } from '../../hooks';
 import { CapacitacionesTableFilters } from './CapacitacionesTableFilters';
@@ -45,7 +46,7 @@ export function CapacitacionesTable() {
           pageSizeOptions={PAGE_SIZE_OPTIONS}
           checkboxSelection={false}
           disableRowSelectionOnClick
-          slots={{ toolbar }}
+          slots={{ toolbar, noResultsOverlay: EmptyStateTable, noRowsOverlay: EmptyStateTable }}
           sx={{ borderRadius: 2, boxShadow: 2 }}
         />
       </Box>

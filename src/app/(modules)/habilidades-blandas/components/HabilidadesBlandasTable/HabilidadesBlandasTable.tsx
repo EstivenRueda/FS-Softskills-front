@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import { EmptyStateTable } from '@/components';
 import { PAGE_SIZE_OPTIONS } from '@/consts';
 import { useHabilidadesBlandasTable } from '../../hooks';
 import { HabilidadesBlandasTableFilters } from './HabilidadesBlandasTableFilters';
@@ -44,7 +45,7 @@ export function HabilidadesBlandasTable() {
           pageSizeOptions={PAGE_SIZE_OPTIONS}
           checkboxSelection={false}
           disableRowSelectionOnClick
-          slots={{ toolbar }}
+          slots={{ toolbar, noResultsOverlay: EmptyStateTable, noRowsOverlay: EmptyStateTable }}
           sx={{ borderRadius: 2, boxShadow: 2 }}
         />
       </Box>
