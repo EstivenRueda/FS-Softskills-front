@@ -120,6 +120,13 @@ export function DropzoneArea<TFieldValues extends FieldValues>(props: DropzoneAr
                   accept={acceptedFiles.join(',')}
                 />
               </Button>
+              {value && (value as any) instanceof FileList && value.length > 0 && (
+                <Stack spacing={1} mt={1}>
+                  {Array.from(value).map((file: any, index) => (
+                    <span key={file.name}>{file.name}</span>
+                  ))}
+                </Stack>
+              )}
               {parsedHelperText && (
                 <>
                   <FormHelperText error={invalid}>{parsedHelperText}</FormHelperText>
