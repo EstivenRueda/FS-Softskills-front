@@ -47,7 +47,7 @@ export function useFileAssetForm(options: UseFileAssetFormOptions) {
           path,
           name,
         }).unwrap();
-        notify("Actualizado exitosamente", 'success');
+        notify('Actualizado exitosamente', 'success');
         onCompleted?.();
         return;
       }
@@ -59,14 +59,14 @@ export function useFileAssetForm(options: UseFileAssetFormOptions) {
         content_type: contentType,
         category: sourceCategory,
       }).unwrap();
-      notify("Creado exitosamente", 'success');
+      notify('Creado exitosamente', 'success');
       onCompleted?.();
     } catch (error: any) {
       if (fileAsset) {
-        notify("Error al actualizar. Inténtalo de nuevo.", 'error', error);
+        notify('Error al actualizar. Inténtalo de nuevo.', 'error', error);
         return;
       }
-      notify("Selecciona un archivo", 'error', error);
+      notify('Selecciona un archivo', 'error', error);
     }
   };
 

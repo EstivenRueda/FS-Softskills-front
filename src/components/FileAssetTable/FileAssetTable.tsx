@@ -4,14 +4,12 @@ import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { EmptyStateTable } from '@/components';
 import { PAGE_SIZE_OPTIONS } from '@/consts';
-import { useFileAssetTableActions, type UseFileAssetTableOptions } from '@/hooks';
-import { useFileAssetTable } from '@/hooks/useFileAssetTable';
+import { useFileAssetTable, type UseFileAssetTableOptions } from '@/hooks';
 
 export type FileAssetTableProps = UseFileAssetTableOptions;
 
 export function FileAssetTable(props: FileAssetTableProps) {
   const { results, columns, isLoading, rowCountState, paginationModel, setPaginationModel } = useFileAssetTable(props);
-
 
   return (
     <Box mb={4}>

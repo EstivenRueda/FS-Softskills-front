@@ -46,12 +46,7 @@ export function FileAssetForm(props: FileAssetFormProps) {
               speech
               disabled={isViewPage}
             />
-            <TextField
-              placeholder="Inserte un link de referencia"
-              name="reference_link"
-              label='Link'
-              speech
-            />
+            <TextField placeholder="Inserte un link de referencia" name="reference_link" label="Link" speech />
 
             <Stack direction="row" spacing={4} py={2} justifyContent="flex-end">
               <Button type="button" color="secondary" onClick={props.onCompleted}>

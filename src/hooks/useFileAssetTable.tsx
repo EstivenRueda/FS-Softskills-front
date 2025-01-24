@@ -7,7 +7,6 @@ import { useFileAssetTableColumns } from './useFileAssetTableColumns';
 export type UseFileAssetTableOptions = UseFileAssetFormOptions;
 
 export function useFileAssetTable(options: UseFileAssetTableOptions) {
-
   const { showFormDialog } = useFormDialog();
 
   const { data, isLoading, rowCountState, paginationModel, setPaginationModel } = useDataGridStateQuery({
@@ -21,7 +20,7 @@ export function useFileAssetTable(options: UseFileAssetTableOptions) {
 
   const handleOpenForm = () => {
     const modal = showFormDialog({
-      title: "Adjuntar archivos",
+      title: 'Adjuntar archivos',
       icon: BackupOutlinedIcon,
       width: 800,
       children: <FileAssetForm {...options} onCompleted={() => modal.hide()} />,

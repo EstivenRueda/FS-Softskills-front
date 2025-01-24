@@ -16,7 +16,7 @@ export function useFileAssetTableActions() {
       icon: <EditOutlinedIcon color="primary" />,
       onClick() {
         const modal = showFormDialog({
-          title: "Editar archivo",
+          title: 'Editar archivo',
           icon: EditOutlinedIcon,
           width: 800,
           children: (
@@ -43,7 +43,7 @@ export function useFileAssetTableActions() {
               await deleteFile(fileAsset.id).unwrap();
               notify('Eliminado exitosamente', 'success');
             } catch (error) {
-              notify("Error al eliminar. Inténtalo de nuevo.", 'error', error);
+              notify('Error al eliminar. Inténtalo de nuevo.', 'error', error);
             }
           },
         });

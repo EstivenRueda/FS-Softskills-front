@@ -12,6 +12,3 @@ export * from './useFileAssetTableColumns';
 export * from './useFileAssetFormResolver';
 export * from './useFileAssetTable';
 export * from './useFileAssetForm';
-
-
-

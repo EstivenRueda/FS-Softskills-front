@@ -28,16 +28,11 @@ export type ParameterResults = {
 
 const paramsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-
-
     retrieveFileCategories: builder.query<Parameter[], void>({
       query: () => '/files/categories/?get_all=true',
     }),
-
   }),
   overrideExisting: false,
 });
 
-export const {
-  useRetrieveFileCategoriesQuery,
-} = paramsApi;
+export const { useRetrieveFileCategoriesQuery } = paramsApi;

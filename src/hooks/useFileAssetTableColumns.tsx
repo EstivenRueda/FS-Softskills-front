@@ -43,7 +43,7 @@ export function useFileAssetTableColumns() {
       sortable: false,
       filterable: false,
       flex: 1,
-      //valueFormatter: (params) => upperCase(params.value),
+      valueFormatter: (params: { value: string }) => upperCase(params.value),
     },
     {
       field: 'created_at',
@@ -51,11 +51,11 @@ export function useFileAssetTableColumns() {
       sortable: false,
       filterable: false,
       flex: 1,
-      //valueFormatter: (params) => formatDate(params.value),
+      valueFormatter: (params: { value: string }) => formatDate(params.value),
     },
     {
       field: 'actions',
-      headerName:'Acciones',
+      headerName: 'Acciones',
       sortable: false,
       filterable: false,
       hideable: false,

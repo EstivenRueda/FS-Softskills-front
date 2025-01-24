@@ -1,4 +1,3 @@
-import { useRouter } from 'next/navigation';
 import { Edit as EditIcon, BackupOutlined as BackupOutlinedIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import { FileAssetForm } from '@/components';
 import { ACCEPTED_FILES_WITH_IMAGES } from '@/consts';
@@ -8,8 +7,7 @@ import { CapacitacionForm } from '../components';
 import { useDeleteCapacitacionMutation } from '../services';
 import { Capacitacion } from '../types';
 
-export function useCapacitacionesTableActions(contentTypePerson: number) {
-  const route = useRouter();
+export function useCapacitacionesTableActions(contentTypeCapacitacion: number) {
   const { showFormDialog } = useFormDialog();
   const { showConfirmDialog } = useConfirmDialog();
   const { notify } = useLoggerNotifier();
@@ -41,7 +39,7 @@ export function useCapacitacionesTableActions(contentTypePerson: number) {
               acceptedFiles={ACCEPTED_FILES_WITH_IMAGES}
               textFormats="Formatos: PDF, XLSM, PPT, PPTX, CVS, JPG, PNG"
               sourceId={capacitacion.id}
-              contentType={contentTypePerson}
+              contentType={contentTypeCapacitacion}
               onCompleted={() => modal.hide()}
             />
           ),

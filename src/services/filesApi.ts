@@ -5,14 +5,14 @@ import { FileAsset, FileAssetArgs, FileAssetResult } from '../types';
 
 const filesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-     retrieveFiles: builder.query<FileAssetResult, FileAssetArgs>({
+    retrieveFiles: builder.query<FileAssetResult, FileAssetArgs>({
       query: ({ page, pageSize, ...params }) => {
         const filterParams = getFilterParams(params);
         return `/files/files/?page=${page + 1}&page_size=${pageSize}${filterParams}`;
       },
       providesTags: ['FileAsset'],
     }),
-   retrieveFile: builder.query<FileAsset, string>({
+    retrieveFile: builder.query<FileAsset, string>({
       query: (id) => `/files/files/${id}/`,
       providesTags: ['FileAsset'],
     }),

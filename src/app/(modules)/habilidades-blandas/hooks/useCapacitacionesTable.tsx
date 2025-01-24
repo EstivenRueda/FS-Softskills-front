@@ -24,7 +24,8 @@ export function useCapacitacionesTable() {
     useRetrieveQuery: useRetrieveCapacitacionesQuery,
   });
 
-  const columns = useCapacitacionesTableColumns();
+  const contentTypeCapacitacion = data?.content_type;
+  const columns = useCapacitacionesTableColumns(contentTypeCapacitacion);
   const { showFormDialog } = useFormDialog();
 
   const handleCreate = () => {
