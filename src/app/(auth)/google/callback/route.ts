@@ -31,6 +31,7 @@ export async function GET(request: Request) {
 
       if (jwtData && jwtData.access) {
         if (cookies) {
+          // We are using cookies to authenticate in the backend so we need to set those here too
           cookies.forEach((cookie) => {
             const cookieParts = cookie.split(';');
             const [name, value] = cookieParts[0].split('=');
