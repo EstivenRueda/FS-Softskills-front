@@ -9,7 +9,7 @@ export function CuestionarioForm() {
   return (
     <Box px={3}>
       <FormContainer formContext={formContext} onSuccess={handleSubmit}>
-        <TableContainer sx={{ maxHeight: 440 }}>
+        <TableContainer sx={{ maxHeight:'65vh' }}>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
