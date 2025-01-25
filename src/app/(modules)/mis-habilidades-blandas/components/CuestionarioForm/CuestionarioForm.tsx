@@ -1,10 +1,10 @@
 import { LoadingButton as Button } from '@mui/lab';
 import { Box, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { FormContainer, TextField } from '@/components';
+import { FormContainer } from '@/components';
 import { useCuestionarioForm } from '../../hooks';
 
 export function CuestionarioForm() {
-  const { formContext, handleSubmit, isLoading, randomQuestions, likertOptions } = useCuestionarioForm();
+  const { formContext, handleSubmit, isLoading, randomQuestions, likertOptions, hasFinished } = useCuestionarioForm();
 
   return (
     <Box px={3}>
@@ -26,15 +26,7 @@ export function CuestionarioForm() {
               {randomQuestions &&
                 randomQuestions.map((pregunta, idx) => (
                   <TableRow key={pregunta.id} tabIndex={-1} hover>
-                    <TableCell>
-                      {pregunta.description}
-                      <TextField
-                        name={`answers[${idx}].question`}
-                        value={pregunta.id}
-                        type="hidden"
-                        sx={{ display: 'none' }}
-                      />
-                    </TableCell>
+                    <TableCell>{pregunta.description}</TableCell>
                     {pregunta.options?.map((option) => <TableCell key={option.id}>{option.option}</TableCell>)}
                   </TableRow>
                 ))}
@@ -44,7 +36,7 @@ export function CuestionarioForm() {
 
         <Stack direction="row" spacing={4} justifyContent="right" marginTop={3}>
           <Button type="submit" loading={isLoading} variant="contained" color="secondary">
-            Siguiente
+            {hasFinished ? 'Finalizar' : 'Siguiente'}
           </Button>
         </Stack>
       </FormContainer>
