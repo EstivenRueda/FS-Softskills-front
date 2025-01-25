@@ -2,7 +2,7 @@ import {
   Psychology as PsychologyIcon,
   ContentPasteSearch as ContentPasteSearchIcon,
   Filter as FilterIcon,
-  Assignment as AssignmentIcon
+  Assignment as AssignmentIcon,
 } from '@mui/icons-material';
 import { NavGroup, NavItem } from '@/components';
 import { useConst } from './useConst';
@@ -16,6 +16,12 @@ export default function useSidebarMenuItems() {
       href: '/habilidades-blandas',
     },
     {
+      id: 'resultados',
+      title: 'Resultados',
+      icon: ContentPasteSearchIcon,
+      href: '/resultados',
+    },
+    {
       id: 'mis-habilidades-blandas',
       title: 'Mis habilidades blandas',
       icon: PsychologyIcon,
@@ -27,11 +33,5 @@ export default function useSidebarMenuItems() {
       icon: FilterIcon,
       href: '/capacitaciones',
     },
-    {
-      id: 'resultados',
-      title: 'Resultados',
-      icon: ContentPasteSearchIcon,
-      href: '/resultados',
-    }
   ]);
 }
