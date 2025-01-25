@@ -1,5 +1,5 @@
-'use client'
+'use client';
 
-export * from './MisHabilidadesBlandasTable'
-export * from './MisHabilidadesBlandasInfo'
-
+export * from './CuestionarioForm';
+export * from './MisHabilidadesBlandasTable';
+export * from './MisHabilidadesBlandasInfo';

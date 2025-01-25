@@ -7,7 +7,7 @@ import { usePreguntaForm, UsePreguntaFormOptions } from '../../hooks';
 export type PreguntaFormProps = UsePreguntaFormOptions;
 
 export function PreguntaForm(props: PreguntaFormProps) {
-  const { formContext, handleSubmit, isLoading, isViewPage, likertOptions, fields } = usePreguntaForm(props);
+  const { formContext, handleSubmit, isLoading, isViewPage, fields } = usePreguntaForm(props);
 
   return (
     <Box p={3}>

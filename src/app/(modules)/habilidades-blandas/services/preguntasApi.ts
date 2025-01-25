@@ -13,7 +13,7 @@ const preguntasApi = baseApi.injectEndpoints({
       providesTags: ['Preguntas'],
     }),
     retrievePregunta: builder.query<Pregunta, string>({
-      query: (slug) => `/softskills/questions/${slug}/`,
+      query: (id) => `/softskills/questions/${id}/`,
       providesTags: ['Preguntas'],
     }),
     createPregunta: builder.mutation<Pregunta, Partial<Pregunta>>({

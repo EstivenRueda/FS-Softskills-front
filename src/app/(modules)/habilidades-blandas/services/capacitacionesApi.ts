@@ -7,13 +7,14 @@ const capacitacionesApi = baseApi.injectEndpoints({
     retrieveCapacitaciones: builder.query<CapacitacionesResult, CapacitacionesArgs>({
       query: ({ page, pageSize, isActive = true, ...params }) => {
         const filterParams = getFilterParams(params);
-        return `/softskills/softskill-trainings/?is_active=${isActive}&page=${page + 1}&page_size=${pageSize}${filterParams}`;
+        return `/softskills/softskill-trainings/?is_active=${isActive}&page=${
+          page + 1
+        }&page_size=${pageSize}${filterParams}`;
       },
-
       providesTags: ['Capacitaciones'],
     }),
     retrieveCapacitacion: builder.query<Capacitacion, string>({
-      query: (slug) => `/softskills/softskill-trainings/${slug}/`,
+      query: (id) => `/softskills/softskill-trainings/${id}/`,
       providesTags: ['Capacitaciones'],
     }),
     createCapacitacion: builder.mutation<Capacitacion, Partial<Capacitacion>>({
@@ -59,4 +60,3 @@ export const {
   usePatchCapacitacionMutation,
   useDeleteCapacitacionMutation,
 } = capacitacionesApi;
-
