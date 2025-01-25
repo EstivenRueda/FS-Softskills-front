@@ -4,7 +4,8 @@ import { googleCallbackUri, googleClientId } from '../../constants';
 import { GoogleIcon } from './GoogleIcon';
 
 export function GoogleSignIn() {
-  const googleSignInUrl = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleCallbackUri}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`;
+  const hostDomainRestriction = 'correounivalle.edu.co';
+  const googleSignInUrl = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleCallbackUri}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline&hd=${hostDomainRestriction}`;
 
   return (
     <Box my={2}>
