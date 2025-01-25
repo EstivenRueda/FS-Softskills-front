@@ -52,9 +52,6 @@ export async function GET(request: Request) {
             cookieStore.set(cookieOptions);
           });
         }
-        console.log('cookies set');
-        console.log(cookieStore.getAll());
-        console.log('REDIRECTING----------');
         redirectPath = '/mis-habilidades-blandas';
       } else {
         console.error('Unauthorized');
