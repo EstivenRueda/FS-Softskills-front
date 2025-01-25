@@ -24,7 +24,7 @@ export function CapacitacionesTable() {
 
   return (
     <>
-      <Typography variant="h4" color="text.primary" sx={{ mb: 3 }}>
+      <Typography variant="h4" color="text.primary" sx={{ mb: 2 }}>
         Capacitaciones
       </Typography>
       <CapacitacionesTableFilters handleCreate={handleCreate} onFilterChange={handleFilterModelChange} />

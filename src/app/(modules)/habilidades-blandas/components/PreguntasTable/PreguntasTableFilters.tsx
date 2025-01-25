@@ -1,13 +1,13 @@
-import { GridFilterModel } from '@mui/x-data-grid';
-import { FormContainer, Select, TextField } from '@/components';
+import NextLink from 'next/link';
 import {
   AddOutlined as AddOutlinedIcon,
   CleaningServicesOutlined as CleaningServicesOutlinedIcon,
   SearchOutlined as SearchOutlinedIcon,
 } from '@mui/icons-material';
-import { IconButton, InputAdornment } from '@mui/material';
 import { LoadingButton as Button } from '@mui/lab';
-import NextLink from 'next/link';
+import { IconButton, InputAdornment } from '@mui/material';
+import { GridFilterModel } from '@mui/x-data-grid';
+import { FormContainer, Select, TextField } from '@/components';
 import { usePreguntasTableFilters } from '../../hooks';
 
 export type PreguntasTableFiltersProps = {
@@ -16,8 +16,8 @@ export type PreguntasTableFiltersProps = {
 };
 
 export function PreguntasTableFilters(props: PreguntasTableFiltersProps) {
-  const { formContext, handleReset } = usePreguntasTableFilters(props);
-  const {handleCreate} = props
+  const { formContext, handleReset, isViewPage } = usePreguntasTableFilters(props);
+  const { handleCreate } = props;
 
   return (
     <FormContainer
@@ -68,16 +68,18 @@ export function PreguntasTableFilters(props: PreguntasTableFiltersProps) {
       <IconButton color="primary" onClick={handleReset} title={'Limpiar filtros'}>
         <CleaningServicesOutlinedIcon />
       </IconButton>
-      <Button
-        startIcon={<AddOutlinedIcon />}
-        type="button"
-        variant="contained"
-        color="secondary"
-        sx={{ minWidth: '25%' }}
-        onClick={handleCreate}
-      >
-        Crear pregunta
-      </Button>
+      {!isViewPage && (
+        <Button
+          startIcon={<AddOutlinedIcon />}
+          type="button"
+          variant="contained"
+          color="secondary"
+          sx={{ minWidth: '25%' }}
+          onClick={handleCreate}
+        >
+          Crear pregunta
+        </Button>
+      )}
     </FormContainer>
   );
 }

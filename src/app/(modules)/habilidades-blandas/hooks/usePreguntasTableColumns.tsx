@@ -3,11 +3,13 @@ import { VisibilityOutlined as VisibilityOutlinedIcon } from '@mui/icons-materia
 import { Divider, Typography } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { MenuActions, PopoverButton, StatusSwitch } from '@/components';
+import { useIsViewPage } from '@/hooks';
 import { usePatchPreguntaMutation } from '../services';
 import { Opcion } from '../types';
 import { usePreguntasTableActions } from './usePreguntasTableActions';
 
 export function usePreguntasTableColumns() {
+  const disabled = useIsViewPage();
   const getTableActions = usePreguntasTableActions();
 
   return useMemo<GridColDef[]>(
@@ -79,6 +81,7 @@ export function usePreguntasTableColumns() {
             slug={params.row.slug}
             isActive={params.row.is_active}
             usePatchMutation={usePatchPreguntaMutation}
+            disabled={disabled}
           />
         ),
       },
@@ -91,7 +94,7 @@ export function usePreguntasTableColumns() {
         filterable: false,
         width: 120,
         hideable: false,
-        renderCell: (params) => <MenuActions actions={getTableActions(params.row)} />,
+        renderCell: (params) => <MenuActions actions={getTableActions(params.row)} disabled={disabled} />,
       },
     ],
     [getTableActions]
