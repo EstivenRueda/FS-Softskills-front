@@ -28,7 +28,7 @@ export function MisHabilidadesBlandasInfo() {
         </Button>
         <Image src="/images/emptyFolder.png" alt="setting" width="200" height="200" />
         <Typography fontSize={18} mt={3}>
-          No se encontraron registros asociados
+          No tienes un cuestionario completo por el momento
         </Typography>
       </Stack>
     </Card>
