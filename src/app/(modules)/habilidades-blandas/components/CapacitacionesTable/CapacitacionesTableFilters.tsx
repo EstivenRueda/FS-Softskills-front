@@ -16,8 +16,8 @@ export type CapacitacionesFiltersProps = {
 };
 
 export function CapacitacionesTableFilters(props: CapacitacionesFiltersProps) {
-  const { formContext, handleReset } = useCapacitacionesTableFilters(props);
-  const {handleCreate} = props
+  const { formContext, handleReset, isViewPage } = useCapacitacionesTableFilters(props);
+  const { handleCreate } = props;
 
   return (
     <FormContainer
@@ -68,16 +68,18 @@ export function CapacitacionesTableFilters(props: CapacitacionesFiltersProps) {
       <IconButton color="primary" onClick={handleReset} title={'Limpiar filtros'}>
         <CleaningServicesOutlinedIcon />
       </IconButton>
-      <Button
-        startIcon={<AddOutlinedIcon />}
-        type="button"
-        variant="contained"
-        color="secondary"
-        sx={{ minWidth: '25%' }}
-        onClick={handleCreate}
-      >
-        Crear Capacitación
-      </Button>
+      {!isViewPage && (
+        <Button
+          startIcon={<AddOutlinedIcon />}
+          type="button"
+          variant="contained"
+          color="secondary"
+          sx={{ minWidth: '25%' }}
+          onClick={handleCreate}
+        >
+          Crear Capacitación
+        </Button>
+      )}
     </FormContainer>
   );
 }

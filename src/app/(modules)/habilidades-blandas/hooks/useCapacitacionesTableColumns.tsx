@@ -1,10 +1,12 @@
 import { useMemo } from 'react';
 import { GridColDef } from '@mui/x-data-grid';
 import { MenuActions, StatusSwitch } from '@/components';
+import { useIsViewPage } from '@/hooks';
 import { usePatchCapacitacionMutation } from '../services';
 import { useCapacitacionesTableActions } from './useCapacitacionesTableActions';
 
 export function useCapacitacionesTableColumns(contentTypeCapacitacion: number) {
+  const disabled = useIsViewPage();
   const getTableActions = useCapacitacionesTableActions(contentTypeCapacitacion);
 
   return useMemo<GridColDef[]>(
@@ -59,6 +61,7 @@ export function useCapacitacionesTableColumns(contentTypeCapacitacion: number) {
             id={params.row.id}
             isActive={params.row.is_active}
             usePatchMutation={usePatchCapacitacionMutation}
+            disabled={disabled}
           />
         ),
       },
@@ -71,7 +74,7 @@ export function useCapacitacionesTableColumns(contentTypeCapacitacion: number) {
         filterable: false,
         width: 120,
         hideable: false,
-        renderCell: (params) => <MenuActions actions={getTableActions(params.row)} />,
+        renderCell: (params) => <MenuActions actions={getTableActions(params.row)} disabled={disabled} />,
       },
     ],
     [getTableActions]
