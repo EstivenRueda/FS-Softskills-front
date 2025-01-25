@@ -31,12 +31,6 @@ export function usePreguntasTable() {
   const columns = usePreguntasTableColumns();
   const { showFormDialog } = useFormDialog();
 
-  const toolbar = () => (
-    <GridToolbarActions
-      actions={[{ title: 'Refrescar', icon: <RefreshIcon />, onClick: refetch, disabled: isLoading }]}
-    />
-  );
-
   const handleCreate = () => {
     const modal = showFormDialog({
       icon: AddIcon,
@@ -45,6 +39,12 @@ export function usePreguntasTable() {
       children: <PreguntaForm onCompleted={() => modal.hide()} />,
     });
   };
+
+  const toolbar = () => (
+    <GridToolbarActions
+      actions={[{ title: 'Refrescar', icon: <RefreshIcon />, onClick: refetch, disabled: isLoading }]}
+    />
+  );
 
   return {
     apiRef,

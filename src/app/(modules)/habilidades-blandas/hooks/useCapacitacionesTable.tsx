@@ -1,11 +1,14 @@
+import { useParams } from 'next/navigation';
 import { Add as AddIcon, Refresh as RefreshIcon } from '@mui/icons-material';
 import { GridToolbarActions } from '@/components';
 import { useDataGridStateQuery, useFormDialog } from '@/hooks';
+import { ParamsWithSlug } from '@/types';
 import { CapacitacionForm } from '../components/CapacitacionForm';
 import { useRetrieveCapacitacionesQuery } from '../services';
 import { useCapacitacionesTableColumns } from './useCapacitacionesTableColumns';
 
 export function useCapacitacionesTable() {
+  const { slug } = useParams<ParamsWithSlug>();
   const {
     apiRef,
     data,
@@ -22,6 +25,7 @@ export function useCapacitacionesTable() {
   } = useDataGridStateQuery({
     stateKey: 'capacitaciones-grid-state',
     useRetrieveQuery: useRetrieveCapacitacionesQuery,
+    queryArgs: { softskillSlug: slug },
   });
 
   const contentTypeCapacitacion = data?.content_type;

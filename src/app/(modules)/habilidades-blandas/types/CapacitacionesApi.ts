@@ -7,4 +7,5 @@ export type CapacitacionesArgs = PaginationArgs & {
   search?: string;
   isActive?: BooleanString;
   softskillId?: string;
+  softskillSlug?: string;
 };
