@@ -2,16 +2,20 @@ import { Fragment } from 'react';
 import { ContentPaste as ContentPasteIcon, ContentPasteSearch as ContentPasteSearchIcon } from '@mui/icons-material';
 import { LoadingButton as Button } from '@mui/lab';
 import { Card, Typography, Stack } from '@mui/material';
-import { useRetrieveHabilidadesBlandasQuery } from '@/app/(modules)/habilidades-blandas/services';
+import { useRetrieveMisHabilidadesBlandasQuery } from '../../services';
 
 export function MisHabilidadesBlandasInfo() {
-  const { data: habilidadBlanda } = useRetrieveHabilidadesBlandasQuery({ page: 0, pageSize: 25 });
+  const { data: misHabilidadesBlandas } = useRetrieveMisHabilidadesBlandasQuery();
 
-  console.log('habilidadBlanda', habilidadBlanda);
+  console.log('misHabilidadesBlandas', misHabilidadesBlandas);
+
+  // Del array de habilidadBlanda hay que sacar el primer slug que encuentre que tenga has_current_questionnaire en false
+  const slug = '';
+  const url = `/mis-habilidades-blandas/${slug}/cuestionario`;
 
   return (
     <Card sx={{ paddingX: 5 }}>
-      {habilidadBlanda?.results.map((habilidadBlanda, index) => (
+      {misHabilidadesBlandas?.map((habilidadBlanda, index) => (
         <Fragment key={habilidadBlanda.id}>
           <Stack direction="row" spacing={4} justifyContent="space-between" marginX={2} marginY={3}>
             <Typography variant="h5" color="text.primary">
