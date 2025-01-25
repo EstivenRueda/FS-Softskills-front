@@ -1,13 +1,11 @@
 import { useMemo } from 'react';
-import NextLink from 'next/link';
-import { Link } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { MenuActions, StatusSwitch } from '@/components';
 import { usePatchCapacitacionMutation } from '../services';
 import { useCapacitacionesTableActions } from './useCapacitacionesTableActions';
 
-export function useCapacitacionesTableColumns() {
-  const getTableActions = useCapacitacionesTableActions();
+export function useCapacitacionesTableColumns(contentTypeCapacitacion: number) {
+  const getTableActions = useCapacitacionesTableActions(contentTypeCapacitacion);
 
   return useMemo<GridColDef[]>(
     () => [

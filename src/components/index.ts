@@ -12,3 +12,6 @@ export * from './PopoverButton';
 export * from './ProtectedPage';
 export * from './Sidebar';
 export * from './ThemeRegistry';
+export * from './FileAssetForm';
+export * from './FileAssetTable';
+export * from './EmptyStateTable';

@@ -4,6 +4,7 @@ export * from './CheckboxButtonGroup';
 export * from './CopyButton';
 export * from './DatePicker';
 export * from './DateTimePicker';
+export * from './DropzoneArea';
 export * from './FormContainer';
 export * from './FormDialog';
 export * from './FormSection';

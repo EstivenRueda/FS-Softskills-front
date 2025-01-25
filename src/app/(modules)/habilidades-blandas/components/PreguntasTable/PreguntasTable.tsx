@@ -1,8 +1,9 @@
-import { Box, Typography } from "@mui/material"
-import { usePreguntasTable } from "../../hooks"
-import { DataGrid } from "@mui/x-data-grid"
-import { PAGE_SIZE_OPTIONS } from "@/consts"
-import { PreguntasTableFilters } from "./PreguntasTableFilters"
+import { Box, Typography } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+import { EmptyStateTable } from '@/components';
+import { PAGE_SIZE_OPTIONS } from '@/consts';
+import { usePreguntasTable } from '../../hooks';
+import { PreguntasTableFilters } from './PreguntasTableFilters';
 
 export function PreguntasTable() {
   const {
@@ -19,7 +20,7 @@ export function PreguntasTable() {
     columns,
     toolbar,
     handleCreate,
-  } = usePreguntasTable()
+  } = usePreguntasTable();
 
   return (
     <>
@@ -45,11 +46,10 @@ export function PreguntasTable() {
           pageSizeOptions={PAGE_SIZE_OPTIONS}
           checkboxSelection={false}
           disableRowSelectionOnClick
-          slots={{ toolbar }}
+          slots={{ toolbar, noResultsOverlay: EmptyStateTable, noRowsOverlay: EmptyStateTable }}
           sx={{ borderRadius: 2, boxShadow: 2 }}
         />
       </Box>
-
     </>
-  )
+  );
 }
