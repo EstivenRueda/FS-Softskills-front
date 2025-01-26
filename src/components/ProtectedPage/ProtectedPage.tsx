@@ -22,7 +22,7 @@ export function ProtectedPage(props: ProtectedRouteProps) {
   return <>{children}</>;
 }
 
-function Loading() {
+export function Loading() {
   return (
     <Box sx={{ display: 'flex', height: '100vh', width: '100vw', alignItems: 'center', justifyContent: 'center' }}>
       <CircularProgress size={60} color="primary" />

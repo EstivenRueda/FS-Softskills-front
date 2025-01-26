@@ -33,7 +33,6 @@ export function useLoginForm() {
         handleLogin(response);
       }
     } catch (error: any) {
-      console.log(error);
       const errorCode = error?.data?.errors?.[0]?.code;
       const errorDetail = error?.data?.errors?.[0]?.detail;
 

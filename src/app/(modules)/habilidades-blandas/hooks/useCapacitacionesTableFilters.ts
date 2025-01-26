@@ -1,5 +1,5 @@
 import type { GridFilterItem } from '@mui/x-data-grid';
-import { useDataGridFilterState } from '@/hooks';
+import { useDataGridFilterState, useIsViewPage } from '@/hooks';
 
 export type CapacitacionesTableFiltersOptions = {
   onFilterChange?: (filters: { items: GridFilterItem[] }) => void;
@@ -7,9 +7,11 @@ export type CapacitacionesTableFiltersOptions = {
 
 export function useCapacitacionesTableFilters({ onFilterChange }: CapacitacionesTableFiltersOptions) {
   const { formContext, handleReset } = useDataGridFilterState({ onFilterChange });
+  const isViewPage = useIsViewPage();
 
   return {
     formContext,
     handleReset,
+    isViewPage,
   };
 }

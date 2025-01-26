@@ -6,6 +6,7 @@ export type User = {
   last_name: string;
   last_login: number;
   permissions?: string[];
+  profile: Profile;
 };
 
 export type UserCredentials = {
