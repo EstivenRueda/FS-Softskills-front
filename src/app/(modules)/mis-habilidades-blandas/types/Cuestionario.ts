@@ -12,5 +12,5 @@ export type Cuestionario = {
 };
 
 export type CuestionarioResult = Omit<Cuestionario, 'answers'> & {
-  softskill_name?: string;
+  softskill_name: string;
 };
