@@ -29,16 +29,9 @@ export async function GET(request: Request) {
 
       const jwtData = await response.json();
 
-      console.log('jwtData');
-      console.log(jwtData);
-
-      console.log('cookies');
-      console.log(cookies);
-
       if (jwtData && jwtData.access) {
         if (cookies) {
           // We are using cookies to authenticate in the backend so we need to set those here too
-          console.log('setting cookies');
           cookies.forEach((cookie) => {
             const cookieParts = cookie.split(';');
             const [name, value] = cookieParts[0].split('=');
@@ -57,13 +50,10 @@ export async function GET(request: Request) {
               }
             });
 
-            cookieStore.set(cookieOptions);
+            cookieStore.set({ ...cookieOptions, domain: process.env.NEXT_PUBLIC_API_URL });
           });
-          console.log('cookies set');
         }
         redirectPath = '/mis-habilidades-blandas';
-        console.log('redirectPath');
-        console.log(redirectPath);
       } else {
         console.error('Unauthorized');
         // throw new Response('Unauthorized', { status: 401 });
