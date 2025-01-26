@@ -10,3 +10,7 @@ export type Cuestionario = {
   is_active: boolean;
   answers: Respuesta[];
 };
+
+export type CuestionarioResult = Omit<Cuestionario, 'answers'> & {
+  softskill_name?: string;
+};
