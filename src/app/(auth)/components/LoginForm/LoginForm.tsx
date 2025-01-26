@@ -1,9 +1,9 @@
+import Image from 'next/image';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { LoadingButton as Button } from '@mui/lab';
 import { Box, IconButton, InputAdornment, Link, Stack, Typography } from '@mui/material';
 import { FormContainer, TextField } from '@/components';
 import { useLoginForm } from '../../hooks';
-import Image from 'next/image';
 
 export function LoginForm() {
   const {
@@ -17,7 +17,6 @@ export function LoginForm() {
   } = useLoginForm();
 
   return (
-    <>
     <FormContainer
       formContext={formContext}
       onSuccess={handleSubmit}
@@ -26,7 +25,6 @@ export function LoginForm() {
         flexDirection: 'column',
         gap: 2,
       }}
-
     >
       <Box display="flex" alignItems="center" justifyContent="center" p={3}>
         <Image
@@ -96,6 +94,5 @@ export function LoginForm() {
         Iniciar sesión
       </Button>
     </FormContainer>
-    </>
   );
 }
