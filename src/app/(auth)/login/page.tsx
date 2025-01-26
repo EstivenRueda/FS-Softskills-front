@@ -1,8 +1,60 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Box, Card } from '@mui/material';
 import Grid from '@mui/material/Grid2';
+import { useConst } from '@/hooks';
 import { GoogleSignIn, LoginForm } from '../components';
 
 export default function LoginPage() {
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code') ?? false;
+  const error = searchParams.get('error') ?? false;
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useConst(() => {
+    const handleLogin = async (code: string) => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`/google/callback?code=${code}`, {
+          credentials: 'include',
+        });
+        const data = await response.json();
+
+        if (data?.access && data?.refresh) {
+          const verifyResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/token/refresh/`, {
+            method: 'POST',
+            body: JSON.stringify({ refresh: data?.refresh }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+          });
+          const refreshData = await verifyResponse.json();
+          router.push('/mis-habilidades-blandas');
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error('Hubo un error al iniciar sesion', 'error', error);
+        router.push('/login');
+        setIsLoading(false);
+      }
+    };
+
+    if (error) {
+      setIsLoading(true);
+      console.error('Hubo un error al iniciar sesion', 'error', error);
+      router.push('/login');
+      setIsLoading(false);
+    }
+
+    if (code) {
+      handleLogin(code);
+    }
+  });
+
   return (
     <Grid container alignItems={'center'} justifyContent={'center'} sx={{ backgroundColor: 'primary.light' }}>
       <Grid size={12}>
@@ -23,8 +75,8 @@ export default function LoginPage() {
               alignContent: 'center',
             }}
           >
-            <LoginForm />
-            <GoogleSignIn />
+            <LoginForm isLoading={isLoading} />
+            <GoogleSignIn isLoading={isLoading} />
           </Card>
         </Box>
       </Grid>

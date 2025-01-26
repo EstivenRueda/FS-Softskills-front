@@ -30,6 +30,14 @@ const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['Usuarios'],
     }),
+    loginGoogle: builder.mutation({
+      query: ({ code }) => ({
+        url: '/auth/google/',
+        method: 'POST',
+        body: { code },
+      }),
+      invalidatesTags: ['Usuarios'],
+    }),
     logout: builder.mutation({
       query: () => ({
         url: '/auth/logout/',
@@ -84,6 +92,7 @@ export const {
   usePatchUserMutation,
   useRegisterMutation,
   useLoginMutation,
+  useLoginGoogleMutation,
   useLogoutMutation,
   useVerifyMutation,
   useRefreshMutation,

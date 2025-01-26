@@ -14,7 +14,7 @@ export function useLoginForm() {
   const dispatch = useAppDispatch();
   const { showFormDialog } = useFormDialog();
   const loginResolver = useLoginFormResolver();
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading: isLoadingLogin }] = useLoginMutation();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -60,7 +60,7 @@ export function useLoginForm() {
   return {
     formContext,
     handleSubmit,
-    isLoading,
+    isLoadingLogin,
     errorMessage,
     handleClickShowPassword,
     showPassword,

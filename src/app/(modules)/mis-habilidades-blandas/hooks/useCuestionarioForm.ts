@@ -24,7 +24,7 @@ export function useCuestionarioForm() {
   const { data: likertOptions, isLoading: likertOptionsLoading } = useRetrieveLikertOptionsQuery();
   const [createCuestionario, { isLoading: createCuestionarioLoading }] = useCreateCuestionarioMutation();
 
-  const idxHabilidad = misHabilidadesBlandas?.findIndex((habilidad) => habilidad.id === habilidadBlanda?.id) || -1;
+  const idxHabilidad = misHabilidadesBlandas?.findIndex((habilidad) => habilidad.id === habilidadBlanda?.id) ?? -1;
   const hasFinished = misHabilidadesBlandas && idxHabilidad === misHabilidadesBlandas.length - 1;
 
   const capacitacionResolver = useCuestionarioResolver();

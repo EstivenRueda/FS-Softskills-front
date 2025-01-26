@@ -5,14 +5,19 @@ import { Box, IconButton, InputAdornment, Link, Stack, Typography } from '@mui/m
 import { FormContainer, TextField } from '@/components';
 import { useLoginForm } from '../../hooks';
 
-export function LoginForm() {
+type LoginFormProps = {
+  isLoading?: boolean;
+};
+
+export function LoginForm(props: LoginFormProps) {
+  const { isLoading = false } = props;
   const {
     errorMessage,
     formContext,
     handleClickShowPassword,
     handleSubmit,
     handleForgotPasswordClick,
-    isLoading,
+    isLoadingLogin,
     showPassword,
   } = useLoginForm();
 
@@ -90,7 +95,7 @@ export function LoginForm() {
         </Link>
       </Stack>
 
-      <Button color="secondary" variant="contained" size="large" type="submit" loading={isLoading}>
+      <Button color="secondary" variant="contained" size="large" type="submit" loading={isLoadingLogin || isLoading}>
         Iniciar sesión
       </Button>
     </FormContainer>

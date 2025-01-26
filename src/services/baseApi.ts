@@ -69,5 +69,6 @@ export const baseApi = createApi({
     'MisHabilidades',
     'RandomQuestions',
     'Cuestionarios',
+    'MisResultados',
   ],
 });

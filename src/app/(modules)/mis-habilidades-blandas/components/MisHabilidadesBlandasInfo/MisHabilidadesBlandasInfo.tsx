@@ -1,20 +1,14 @@
-import { Fragment } from 'react';
 import Image from 'next/image';
-import { ContentPaste as ContentPasteIcon, ContentPasteSearch as ContentPasteSearchIcon } from '@mui/icons-material';
+import { ContentPaste as ContentPasteIcon } from '@mui/icons-material';
 import { LoadingButton as Button } from '@mui/lab';
 import { Card, Typography, Stack } from '@mui/material';
-import { useRetrieveMisHabilidadesBlandasQuery } from '../../services';
+import { useMisHabilidadesBlandasInfo } from '../../hooks';
 
 export function MisHabilidadesBlandasInfo() {
-  const { data: misHabilidadesBlandas } = useRetrieveMisHabilidadesBlandasQuery();
-
-  console.log('misHabilidadesBlandas', misHabilidadesBlandas);
-
-  const slug = misHabilidadesBlandas?.find((hasForm)=> hasForm.has_current_questionnaire === false );
-  const url = `/mis-habilidades-blandas/${slug?.slug}/cuestionario`;
+  const { isLoading, formUrl, hasFinished, misResultados } = useMisHabilidadesBlandasInfo();
 
   return (
-    <Card sx={{ p:8 }}>
+    <Card sx={{ p: 8 }}>
       <Stack
         direction="column"
         spacing={10}
@@ -23,13 +17,24 @@ export function MisHabilidadesBlandasInfo() {
           alignItems: 'center',
         }}
       >
-        <Button startIcon={<ContentPasteIcon />} variant="contained" color="secondary" size="large" href={url}>
-          Llenar cuestionario
-        </Button>
-        <Image src="/images/emptyFolder.png" alt="setting" width="200" height="200" />
-        <Typography fontSize={18} mt={3}>
-          No tienes un cuestionario completo por el momento
-        </Typography>
+        {!hasFinished ? (
+          <>
+            <Button
+              startIcon={<ContentPasteIcon />}
+              variant="contained"
+              color="secondary"
+              size="large"
+              href={formUrl}
+              loading={isLoading}
+            >
+              Llenar cuestionario
+            </Button>
+            <Image src="/images/emptyFolder.png" alt="setting" width="200" height="200" />
+            <Typography fontSize={18} mt={3}>
+              No tienes un cuestionario completo por el momento
+            </Typography>
+          </>
+        ) : null}
       </Stack>
     </Card>
   );
