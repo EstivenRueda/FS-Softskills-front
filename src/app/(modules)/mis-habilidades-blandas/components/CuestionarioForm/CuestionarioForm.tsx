@@ -1,7 +1,8 @@
 import { LoadingButton as Button } from '@mui/lab';
 import { Box, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { FormContainer, RadioButton } from '@/components';
+import { FormContainer } from '@/components';
 import { useCuestionarioForm } from '../../hooks';
+import { RadioButton } from '../RadioButton';
 
 export function CuestionarioForm() {
   const { formContext, handleSubmit, isLoading, randomQuestions, likertOptions, hasFinished } = useCuestionarioForm();
@@ -29,12 +30,7 @@ export function CuestionarioForm() {
                 randomQuestions.map((pregunta, idx) => (
                   <TableRow key={pregunta.id} tabIndex={-1} hover>
                     <TableCell>{pregunta.description}</TableCell>
-
-                      <RadioButton
-                        name={`answers[${idx}].option`}
-                        options={pregunta.options}
-                        required
-                      />
+                    <RadioButton name={`answers[${idx}].option`} options={pregunta.options} required />
                   </TableRow>
                 ))}
             </TableBody>
