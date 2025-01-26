@@ -3,7 +3,9 @@ import { Respuesta } from './Respuesta';
 export type Cuestionario = {
   id: string;
   softskill: string;
+  softskill_name: string;
   attendee: string;
+  attendee_name: string;
   is_current: boolean;
   observations: string;
   grade: number;
@@ -11,6 +13,4 @@ export type Cuestionario = {
   answers: Respuesta[];
 };
 
-export type CuestionarioResult = Omit<Cuestionario, 'answers'> & {
-  softskill_name: string;
-};
+export type CuestionarioResult = Omit<Cuestionario, 'answers'>

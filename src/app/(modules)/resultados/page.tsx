@@ -1,5 +1,5 @@
+import { ResultadosTable } from './components';
+
 export default function ResultadosPage() {
-  return (
-    <div>Resultados</div>
-  )
+  return <ResultadosTable />;
 }
