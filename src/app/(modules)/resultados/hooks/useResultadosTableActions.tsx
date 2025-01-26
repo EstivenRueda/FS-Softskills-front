@@ -1,4 +1,4 @@
-import { Edit as EditIcon, QuestionMark as QuestionMarkIcon, Filter as FilterIcon } from '@mui/icons-material';
+import { Edit as EditIcon } from '@mui/icons-material';
 import { useConst, useFormDialog } from '@/hooks';
 import { TableActionsFn } from '@/types';
 import { CuestionarioResult } from '../../mis-habilidades-blandas/types';
