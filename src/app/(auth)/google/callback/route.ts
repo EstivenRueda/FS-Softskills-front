@@ -50,7 +50,8 @@ export async function GET(request: Request) {
               }
             });
 
-            cookieStore.set({ ...cookieOptions, domain: process.env.NEXT_PUBLIC_API_URL });
+            const domain = new URL(`${process.env.NEXT_PUBLIC_API_URL}`).hostname;
+            cookieStore.set({ ...cookieOptions, domain });
           });
         }
         redirectPath = '/mis-habilidades-blandas';
