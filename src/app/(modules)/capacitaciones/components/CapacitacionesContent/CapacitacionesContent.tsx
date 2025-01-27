@@ -12,7 +12,7 @@ export function CapacitacionesContent(props: CapacitacionesContentProps) {
 
   return (
     <Paper elevation={1}>
-      <Grid container p={5} spacing={3}>
+      <Grid container p={3} spacing={3}>
         {!!!misCapacitaciones ? (
           <Stack
             spacing={8}
