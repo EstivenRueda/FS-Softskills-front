@@ -55,7 +55,7 @@ export function useCapacitacionesTableColumns(contentTypeCapacitacion: number) {
         headerAlign: 'center',
         align: 'center',
         hideable: false,
-        flex: 1,
+        width: 120,
         renderCell: (params) => (
           <StatusSwitch
             id={params.row.id}

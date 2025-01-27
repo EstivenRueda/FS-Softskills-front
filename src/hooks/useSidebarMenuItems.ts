@@ -4,6 +4,7 @@ import {
   ContentPasteSearch as ContentPasteSearchIcon,
   Filter as FilterIcon,
   Assignment as AssignmentIcon,
+  Group as GroupIcon,
 } from '@mui/icons-material';
 import { NavGroup, NavItem } from '@/components';
 import { useAuth } from './auth';
@@ -17,6 +18,12 @@ export default function useSidebarMenuItems() {
 
     if (user && user.profile.type === 'ADMINISTRATIVE') {
       menu.push(
+        {
+          id: 'usuarios',
+          title: 'Usuarios',
+          icon: GroupIcon,
+          href: '/usuarios',
+        },
         {
           id: 'habilidades-blandas',
           title: 'Habilidades blandas',
