@@ -111,7 +111,7 @@ export function DropzoneArea<TFieldValues extends FieldValues>(props: DropzoneAr
               </FormLabel>
             )}
             <FormControl error={invalid} required={required} fullWidth {...formControlProps}>
-              <Button component="label" variant="contained" startIcon={<FileUploadOutlinedIcon />}>
+              <Button color="secondary" component="label" variant="contained" startIcon={<FileUploadOutlinedIcon />}>
                 Subir archivo
                 <VisuallyHiddenInput
                   type="file"
