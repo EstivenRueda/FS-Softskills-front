@@ -42,13 +42,14 @@ export function useUsuariosTableColumns() {
         flex: 1,
       },
       {
-        field: 'profile.type',
+        field: 'profile.type_name',
         headerName: 'Tipo',
         sortable: false,
         filterable: false,
         hideable: false,
         headerAlign: 'center',
         width: 150,
+        valueGetter: (value, row, column, apiRef) => row.profile.type_name,
       },
       {
         field: 'is_active',

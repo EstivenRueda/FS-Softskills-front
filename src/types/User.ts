@@ -29,4 +29,5 @@ export type Profile = {
   display_name: string;
   user?: string;
   type: 'STUDENT' | 'ADMINISTRATIVE';
+  type_name: string;
 };

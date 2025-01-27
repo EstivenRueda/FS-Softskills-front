@@ -1,11 +1,12 @@
 import { LoadingButton as Button } from '@mui/lab';
 import { Box, Stack } from '@mui/material';
-import { Autocomplete, FormContainer, FormSection, TextField } from '@/components';
+import { Autocomplete, FormContainer, FormSection, Password, TextField } from '@/components';
 import { useUsuarioForm, UseUsuarioFormOptions } from '../../hooks';
 
 export type UsuarioFormProps = UseUsuarioFormOptions;
 
 export function UsuarioForm(props: UsuarioFormProps) {
+  const { usuario } = props;
   const { formContext, handleSubmit, isLoading, profileTypes } = useUsuarioForm(props);
 
   return (
@@ -29,6 +30,12 @@ export function UsuarioForm(props: UsuarioFormProps) {
             matchId
             required
           />
+          {!!!usuario && (
+            <>
+              <Password name="password" label="Contraseña" required />
+              <Password name="password_confirm" label="Confirmar contraseña" required />
+            </>
+          )}
         </FormSection>
 
         <Stack direction="row" spacing={4} justifyContent="right">

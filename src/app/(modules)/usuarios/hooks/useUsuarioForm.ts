@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useIsViewPage, useLoggerNotifier } from '@/hooks';
+import { useLoggerNotifier } from '@/hooks';
 import { useCreateUsuarioMutation, useRetrieveProfileTypesQuery, useUpdateUsuarioMutation } from '../services';
 import { Usuario } from '../types';
 import { useUsuarioResolver } from './useUsuarioResolver';
@@ -17,7 +17,7 @@ export function useUsuarioForm(options: UseUsuarioFormOptions) {
   const [updateUsuario, { isLoading: updateUsuarioLoading }] = useUpdateUsuarioMutation();
   const { data: profileTypes, isLoading: profileTypesLoading } = useRetrieveProfileTypesQuery();
 
-  const usuarioResolver = useUsuarioResolver();
+  const usuarioResolver = useUsuarioResolver(usuario);
   const formContext = useForm<Usuario>({
     resolver: usuarioResolver,
     values: usuario,
