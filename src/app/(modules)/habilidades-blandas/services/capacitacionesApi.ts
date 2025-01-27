@@ -48,6 +48,10 @@ const capacitacionesApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['Capacitaciones'],
     }),
+    retrieveMisCapacitaciones: builder.query<Capacitacion[], string>({
+      query: (slug) => `/softskills/${slug}/my-softskill-trainings/`,
+      providesTags: ['MisCapacitaciones'],
+    }),
   }),
   overrideExisting: false,
 });
@@ -59,4 +63,5 @@ export const {
   useUpdateCapacitacionMutation,
   usePatchCapacitacionMutation,
   useDeleteCapacitacionMutation,
+  useRetrieveMisCapacitacionesQuery,
 } = capacitacionesApi;

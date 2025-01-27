@@ -4,6 +4,7 @@ export type Cuestionario = {
   id: string;
   softskill: string;
   softskill_name: string;
+  softskill_slug: string;
   attendee: string;
   attendee_name: string;
   is_current: boolean;

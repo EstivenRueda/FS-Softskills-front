@@ -2,6 +2,7 @@
 
 export * from './AppLayout';
 export * from './AppSetup';
+export * from './BasicTabs';
 export * from './Breadcrumbs';
 export * from './ConfirmDialog';
 export * from './forms';
