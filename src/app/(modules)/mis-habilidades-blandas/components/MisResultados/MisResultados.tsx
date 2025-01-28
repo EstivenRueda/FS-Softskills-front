@@ -1,58 +1,62 @@
-import { ContentPaste as ContentPasteIcon } from '@mui/icons-material';
-import { LoadingButton as Button } from '@mui/lab';
 import { BarChart } from '@mui/x-charts';
-import { useRetrieveMisResultadosQuery } from '../../services';
+import { formatDateAndHour } from '@/utils';
+import { GrupoCuestionarioConsolidado } from '../../types';
 
 export type MisResultadosProps = {
-  handleCreate: () => void;
+  misResultados: GrupoCuestionarioConsolidado[];
 };
 
 export function MisResultados(props: MisResultadosProps) {
-  const { handleCreate } = props;
-  const { data: misResultados, isLoading } = useRetrieveMisResultadosQuery();
+  const { misResultados } = props;
 
-  const abbreviate = (name: string) =>
-    name
-      .split(' ')
-      .map((word) => word.slice(0, 3))
-      .join(' ');
-
-  const dataset =
-    misResultados?.map((result) => ({
-      softskill_name: result.softskill_name,
-      grade: result.grade,
-    })) ?? [];
+  const resultados =
+    misResultados?.map((grupoCuestionarioConsolidado) => {
+      return {
+        isComplete: grupoCuestionarioConsolidado.is_complete,
+        createdAt: grupoCuestionarioConsolidado.created_at,
+        dataset: grupoCuestionarioConsolidado.questionnaires.map((cuestionarioResult) => ({
+          softskill_name: cuestionarioResult.softskill_name,
+          grade: cuestionarioResult.grade,
+        })),
+      };
+    }) ?? [];
 
   return (
     <>
-      <BarChart
-        dataset={dataset}
-        yAxis={[
-          {
-            scaleType: 'band',
-            dataKey: 'softskill_name',
-            valueFormatter: (name, context) => (context.location === 'tick' ? abbreviate(name) : name),
-          },
-        ]}
-        xAxis={[{ label: 'Puntaje', max: 100 }]}
-        series={[{ dataKey: 'grade', label: 'Mis Resultados', valueFormatter }]}
-        layout="horizontal"
-        height={500}
-      />
-      <Button
-        startIcon={<ContentPasteIcon />}
-        variant="contained"
-        color="secondary"
-        size="large"
-        loading={isLoading}
-        onClick={handleCreate}
-      >
-        Llenar nuevo cuestionario
-      </Button>
+      {resultados.map((resultado, index) => {
+        if (resultado.isComplete) {
+          return (
+            <BarChart
+              key={`results-dataset-${index}`}
+              dataset={resultado.dataset}
+              yAxis={[
+                {
+                  scaleType: 'band',
+                  dataKey: 'softskill_name',
+                  valueFormatter: (name, context) => (context.location === 'tick' ? abbreviate(name) : name),
+                },
+              ]}
+              xAxis={[{ label: 'Puntaje', max: 100 }]}
+              series={[
+                { dataKey: 'grade', label: `Mis Resultados ${formatDateAndHour(resultado.createdAt)}`, valueFormatter },
+              ]}
+              layout="horizontal"
+              height={500}
+            />
+          );
+        }
+      })}
     </>
   );
 }
 
 function valueFormatter(value: number | null) {
   return `${value} puntos`;
+}
+
+function abbreviate(name: string) {
+  return name
+    .split(' ')
+    .map((word) => word.slice(0, 3))
+    .join(' ');
 }

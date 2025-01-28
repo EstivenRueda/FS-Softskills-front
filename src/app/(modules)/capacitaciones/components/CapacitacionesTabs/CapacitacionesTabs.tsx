@@ -8,13 +8,18 @@ import { CapacitacionesContent } from '../CapacitacionesContent';
 export function CapacitacionesTabs() {
   const { data: misResultados, isLoading: misResultadosLoading } = useRetrieveMisResultadosQuery();
 
-
   const tabs = useMemo(() => {
-    if (!!!misResultados) {
+    if (!misResultados || !misResultados.length) {
       return [];
     }
 
-    return misResultados.map((resultado) => ({
+    const grupoCuestionarioConsolidado = misResultados.find((resultado) => resultado.is_complete);
+
+    if (!grupoCuestionarioConsolidado) {
+      return [];
+    }
+
+    return grupoCuestionarioConsolidado.questionnaires.map((resultado) => ({
       label: resultado.softskill_name,
       component: <CapacitacionesContent slug={resultado.softskill_slug} />,
     }));
@@ -33,7 +38,7 @@ export function CapacitacionesTabs() {
           sx={{
             justifyContent: 'center',
             alignItems: 'center',
-            p: 10
+            p: 10,
           }}
         >
           <Image src="/images/emptyFolder.png" alt="setting" width="200" height="200" />

@@ -23,7 +23,7 @@ const cuestionariosApi = baseApi.injectEndpoints({
         method: 'POST',
         body: cuestionario,
       }),
-      invalidatesTags: ['Cuestionarios', 'MisHabilidades'],
+      invalidatesTags: ['Cuestionarios', 'MisHabilidades', 'MisResultados'],
     }),
     updateCuestionario: builder.mutation<Cuestionario, Partial<Cuestionario>>({
       query: ({ id, ...cuestionario }) => ({

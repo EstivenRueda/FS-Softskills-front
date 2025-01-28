@@ -6,8 +6,15 @@ import { useMisHabilidadesBlandasInfo } from '../../hooks';
 import { MisResultados } from '../MisResultados';
 
 export function MisHabilidadesBlandasInfo() {
-  const { isLoading, formUrl, hasFinished, handleCreateGroupQuestionnaire, handleCreateNewGroupQuestionnaire } =
-    useMisHabilidadesBlandasInfo();
+  const {
+    misResultados,
+    isLoading,
+    formUrl,
+    isInitialQuestionnaireGroup,
+    hasIncompleteQuestionnaire,
+    handleCreateGroupQuestionnaire,
+    handleCreateNewGroupQuestionnaire,
+  } = useMisHabilidadesBlandasInfo();
 
   return (
     <Card sx={{ p: 8 }}>
@@ -19,7 +26,7 @@ export function MisHabilidadesBlandasInfo() {
           alignItems: 'center',
         }}
       >
-        {!hasFinished ? (
+        {isInitialQuestionnaireGroup && hasIncompleteQuestionnaire ? (
           <>
             <Button
               startIcon={<ContentPasteIcon />}
@@ -37,8 +44,18 @@ export function MisHabilidadesBlandasInfo() {
             </Typography>
           </>
         ) : (
-          <MisResultados handleCreate={handleCreateNewGroupQuestionnaire} />
+          <Button
+            startIcon={<ContentPasteIcon />}
+            variant="contained"
+            color="secondary"
+            size="large"
+            loading={isLoading}
+            onClick={() => handleCreateNewGroupQuestionnaire(formUrl)}
+          >
+            Llenar nuevo cuestionario
+          </Button>
         )}
+        {misResultados && !!misResultados.length && <MisResultados misResultados={misResultados} />}
       </Stack>
     </Card>
   );

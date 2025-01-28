@@ -1,6 +1,6 @@
 import { baseApi } from '@/services';
 import { Pregunta } from '../../habilidades-blandas/types';
-import { CuestionarioResult, GrupoCuestionario, MiHabilidadBlanda } from '../types';
+import { CuestionarioResult, GrupoCuestionario, GrupoCuestionarioConsolidado, MiHabilidadBlanda } from '../types';
 
 const misHabilidadesBlandasApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -16,7 +16,7 @@ const misHabilidadesBlandasApi = baseApi.injectEndpoints({
       query: (slug) => `/softskills/${slug}/random-questions/`,
       providesTags: ['RandomQuestions'],
     }),
-    retrieveMisResultados: builder.query<CuestionarioResult[], void>({
+    retrieveMisResultados: builder.query<GrupoCuestionarioConsolidado[], void>({
       query: () => `/softskills/my-results`,
       providesTags: ['MisResultados'],
     }),

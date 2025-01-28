@@ -22,7 +22,7 @@ const grupoCuestionariosApi = baseApi.injectEndpoints({
         url: `/softskills/questionnaire-groups/`,
         method: 'POST',
       }),
-      invalidatesTags: ['GrupoCuestionarios', 'MiGrupoCuestionario', 'MisHabilidades'],
+      invalidatesTags: ['GrupoCuestionarios', 'MiGrupoCuestionario', 'MisHabilidades', 'MisResultados'],
     }),
     updateGrupoCuestionario: builder.mutation<GrupoCuestionario, Partial<GrupoCuestionario>>({
       query: ({ id, ...cuestionario }) => ({
