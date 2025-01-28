@@ -6,6 +6,7 @@ import { ParamsWithSlug } from '@/types';
 import { useRetrieveHabilidadBlandaQuery, useRetrieveLikertOptionsQuery } from '../../habilidades-blandas/services';
 import {
   useCreateCuestionarioMutation,
+  useRetrieveMiGrupoCuestionarioQuery,
   useRetrieveMisHabilidadesBlandasQuery,
   useRetrieveRandomQuestionsQuery,
 } from '../services';
@@ -18,6 +19,7 @@ export function useCuestionarioForm() {
   const { notify } = useLoggerNotifier();
 
   const { data: habilidadBlanda, isLoading: habilidadBlandaLoading } = useRetrieveHabilidadBlandaQuery(slug);
+  const { data: miGrupoCuestionario, isLoading: miGrupoCuestionarioLoading } = useRetrieveMiGrupoCuestionarioQuery();
   const { data: misHabilidadesBlandas, isLoading: misHabilidadesBlandasLoading } =
     useRetrieveMisHabilidadesBlandasQuery();
   const { data: randomQuestions, isLoading: randomQuestionsLoading } = useRetrieveRandomQuestionsQuery(slug);
@@ -50,7 +52,16 @@ export function useCuestionarioForm() {
         return;
       }
 
-      await createCuestionario({ ...data, softskill: habilidadBlanda.id }).unwrap();
+      if (!miGrupoCuestionario) {
+        notify('No se pudo obtener el grupo de cuestionario', 'error');
+        return;
+      }
+
+      await createCuestionario({
+        ...data,
+        questionnaire_group: miGrupoCuestionario.id,
+        softskill: habilidadBlanda.id,
+      }).unwrap();
       notify('Cuestionario guardado correctamente', 'success');
 
       if (misHabilidadesBlandas && idxHabilidad < misHabilidadesBlandas.length - 1) {
@@ -69,6 +80,7 @@ export function useCuestionarioForm() {
     handleSubmit,
     isLoading:
       habilidadBlandaLoading ||
+      miGrupoCuestionarioLoading ||
       misHabilidadesBlandasLoading ||
       randomQuestionsLoading ||
       createCuestionarioLoading ||

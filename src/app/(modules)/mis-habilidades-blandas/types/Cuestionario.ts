@@ -2,6 +2,7 @@ import { Respuesta } from './Respuesta';
 
 export type Cuestionario = {
   id: string;
+  questionnaire_group: string;
   softskill: string;
   softskill_name: string;
   softskill_slug: string;
@@ -14,4 +15,4 @@ export type Cuestionario = {
   answers: Respuesta[];
 };
 
-export type CuestionarioResult = Omit<Cuestionario, 'answers'>
+export type CuestionarioResult = Omit<Cuestionario, 'answers'>;

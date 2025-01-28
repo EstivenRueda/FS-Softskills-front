@@ -6,7 +6,8 @@ import { useMisHabilidadesBlandasInfo } from '../../hooks';
 import { MisResultados } from '../MisResultados';
 
 export function MisHabilidadesBlandasInfo() {
-  const { isLoading, formUrl, hasFinished } = useMisHabilidadesBlandasInfo();
+  const { isLoading, formUrl, hasFinished, handleCreateGroupQuestionnaire, handleCreateNewGroupQuestionnaire } =
+    useMisHabilidadesBlandasInfo();
 
   return (
     <Card sx={{ p: 8 }}>
@@ -25,8 +26,8 @@ export function MisHabilidadesBlandasInfo() {
               variant="contained"
               color="secondary"
               size="large"
-              href={formUrl}
               loading={isLoading}
+              onClick={() => handleCreateGroupQuestionnaire(formUrl)}
             >
               Llenar cuestionario
             </Button>
@@ -36,7 +37,7 @@ export function MisHabilidadesBlandasInfo() {
             </Typography>
           </>
         ) : (
-          <MisResultados />
+          <MisResultados handleCreate={handleCreateNewGroupQuestionnaire} />
         )}
       </Stack>
     </Card>
