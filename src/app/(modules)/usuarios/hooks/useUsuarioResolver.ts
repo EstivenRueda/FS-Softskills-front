@@ -19,6 +19,7 @@ export function useUsuarioResolver(usuario?: Usuario) {
         .min(3, 'Los apellidos deben tener minimo 3 caracteres')
         .max(150, 'Los apellidos deben tener máximo 150 caracteres'),
       email: z.string({ required_error }).email(),
+      username: z.string({ required_error }).max(150, 'El nombre de usuario debe tener máximo 150 caracteres'),
       profile: z.object({
         type: z.string({ required_error }),
       }),

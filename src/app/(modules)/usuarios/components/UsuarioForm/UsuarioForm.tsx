@@ -20,6 +20,13 @@ export function UsuarioForm(props: UsuarioFormProps) {
           <TextField name="first_name" label="Nombres" speech required />
           <TextField name="last_name" label="Apellidos" speech required />
           <TextField name="email" label="Email" speech required />
+          <TextField name="username" label="Nombre de usuario" speech required />
+          {!!!usuario && (
+            <>
+              <Password name="password" label="Contraseña" required />
+              <Password name="password_confirm" label="Confirmar contraseña" required />
+            </>
+          )}
           <Autocomplete
             placeholder={'Seleccione el tipo de usuario'}
             name="profile.type"
@@ -30,12 +37,6 @@ export function UsuarioForm(props: UsuarioFormProps) {
             matchId
             required
           />
-          {!!!usuario && (
-            <>
-              <Password name="password" label="Contraseña" required />
-              <Password name="password_confirm" label="Confirmar contraseña" required />
-            </>
-          )}
         </FormSection>
 
         <Stack direction="row" spacing={4} justifyContent="right">
